@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package proyecto.pkg2;
-
+import java.time.Clock;
 /**
  *
  * @author Enzo
@@ -13,8 +13,8 @@ public class Proyecto2 {
     /**
      * @param args the command line arguments
      */
+  
     public static void main(String[] args) {
-        // TODO code application logic here
     }
-    
 }
+
