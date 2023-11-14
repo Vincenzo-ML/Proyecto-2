@@ -233,5 +233,12 @@ public class Lista<T> {
         return false;
     }
     
+    public void print(){
+        Nodo pointer = getHead();
+        while(pointer != null){
+            System.out.println("["+ pointer.getData() +"]");
+            pointer = pointer.getNext();
+        }
+    }
     
 }
