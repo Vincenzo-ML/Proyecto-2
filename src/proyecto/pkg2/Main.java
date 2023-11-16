@@ -5,7 +5,9 @@
 package proyecto.pkg2;
 import Datos.*;
 import Objetos.*;
+import java.io.File;
 import java.time.Clock;
+import GUI.*;
 /**
  *
  * @author Enzo
@@ -18,7 +20,7 @@ public class Main {
   
     public static void main(String[] args) {
         Util Util = new Util();
-        long st = Util.StartTime();
+        /*long st = Util.StartTime();
         Arreglo Arreglo = new Arreglo(5);
         NodoA n = new NodoA(Util.SentTime(st),"gv");
         NodoA a = new NodoA(Util.SentTime(st),"hv");
@@ -38,8 +40,12 @@ public class Main {
         
         Arreglo.removeMin();
         
-        Arreglo.print();
+        Arreglo.print();*/
+        Util.leer_CSV();
+        
+        /*Ventana1 ventana = new Ventana1();
+        ventana.setVisible(true);*/
     }
-    }
+}
 
 

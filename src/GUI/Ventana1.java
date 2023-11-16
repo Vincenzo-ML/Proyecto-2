@@ -10,11 +10,16 @@ package GUI;
  */
 public class Ventana1 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Ventana1
-     */
+    public static Ventana2 v2;
+    public static Ventana3 v3;
+    public static Ventana4 v4;
+    public static Ventana5 v5;
+    public static Ventana6 v6;
+    
     public Ventana1() {
         initComponents();
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);//muestra la interfáz en el centro
     }
 
     /**
