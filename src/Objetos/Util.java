@@ -61,14 +61,15 @@ public class Util {
             while (line!= null){
                 String [] array= line.split(",");
                 String p = "";
-                if (array[1].equalsIgnoreCase("prioridad_baja")){
-                    p = "prioridad_baja";
-                }else if(array[1].equalsIgnoreCase("prioridad_media")){
-                    p = "prioridad media";
-                }else if(array[1].equalsIgnoreCase("prioridad_alta")){
-                    p = "prioridad alta";
+                if (array[1].equalsIgnoreCase(" prioridad_baja")){
+                    p += " prioridad_baja";
+                }else if(array[1].equalsIgnoreCase(" prioridad_media")){
+                    p += " prioridad media";
+                }else if(array[1].equalsIgnoreCase(" prioridad_alta")){
+                    p += " prioridad alta";
                 }
                 Persona persona = new Persona(array[0], p, documents);
+                JOptionPane.showMessageDialog(null, array[0] + p);
                 usuarios.append(persona);
                 line = br.readLine();
             }
