@@ -69,6 +69,8 @@ public class Lista<T> {
         size = 0;
     }
     
+  
+    
     public final void append(T data){
         Nodo newNode = new Nodo(data);
         if(isEmpty() == true){
@@ -241,4 +243,33 @@ public class Lista<T> {
         }
     }
     
+    public Nodo <T> next(Nodo<T> pValor){
+        if (pValor != this.getTail()){
+            return pValor.getNext();
+        }else{
+            return null;
+        }
+    }
+    public Nodo <T> beforeLast(){
+        if (this.isEmpty()){
+            return null;
+        }else{
+            Nodo<T> pAux = this.getHead();
+            while (pAux.getNext()!= this.getTail()){
+                pAux = this.next(pAux);
+            }
+            return pAux;
+        }
+        
+    }
+    public void postinsert(T x, Nodo <T> pValor){
+        Nodo <T> pNew = new Nodo <>(x);
+        if(this.isEmpty()){
+            this.head = pNew;
+        }else{
+            pNew.setNext(pValor.getNext());
+            pValor.setNext(pNew);
+        }
+        size++;
+    }
 }

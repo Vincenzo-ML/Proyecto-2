@@ -48,11 +48,11 @@ public class Util {
             
     }
     
-    public Lista<Persona> leer_CSV(){
+    public Lista<Persona> leer_CSV(File file){
         //Cargamos un archivo
-        File file = JFileChooser();
-        Lista<Persona> usuarios = new Lista<>();
-        Lista<Documentos> documents = new Lista<>();
+        //File file = JFileChooser();
+        Persona persona = new Persona();
+        Lista<Persona> lista = new Lista<>();
         try{        
             //abrimos el archivo.csv en br
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -68,9 +68,11 @@ public class Util {
                 }else if(array[1].equalsIgnoreCase(" prioridad_alta")){
                     p += " prioridad alta";
                 }
-                Persona persona = new Persona(array[0], p, documents);
-                JOptionPane.showMessageDialog(null, array[0] + p);
-                usuarios.append(persona);
+                persona.setName(array[0]);
+                persona.setprioridad(p);
+                JOptionPane.showMessageDialog(null, persona.getName() + persona.getprioridad());
+                lista.append(persona);
+                //persona.addDocumento(documents);
                 line = br.readLine();
             }
             //cerramos el buffer
@@ -78,7 +80,7 @@ public class Util {
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-        return usuarios;
+        return lista;
     }
     
 

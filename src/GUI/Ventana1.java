@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import Datos.*;
+import Objetos.*;
+
 /**
  *
  * @author diego
@@ -15,11 +18,18 @@ public class Ventana1 extends javax.swing.JFrame {
     public static Ventana4 v4;
     public static Ventana5 v5;
     public static Ventana6 v6;
+    public static Ventana0 v0;
+
+    Lista<Persona> list = new Lista<>();
+    Util func = new Util();
     
     public Ventana1() {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);//muestra la interfáz en el centro
+        v0.setVisible(false);
+        this.setSize(710,502);
+
     }
 
     /**
@@ -33,20 +43,20 @@ public class Ventana1 extends javax.swing.JFrame {
 
         background = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
-        fileCSV = new javax.swing.JButton();
-        addUser = new javax.swing.JButton();
-        deleteUser = new javax.swing.JButton();
-        createDocument = new javax.swing.JButton();
-        printDocument = new javax.swing.JButton();
-        showPrinter = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        freePrinter = new javax.swing.JButton();
-        deleteDoc = new javax.swing.JButton();
         impresora = new javax.swing.JLabel();
         usuarios = new javax.swing.JLabel();
         documentos = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
+        addUser = new javax.swing.JButton();
+        deleteUser = new javax.swing.JButton();
+        printDocument = new javax.swing.JButton();
         printDocument1 = new javax.swing.JButton();
+        createDocument = new javax.swing.JButton();
+        freePrinter = new javax.swing.JButton();
+        showPrinter = new javax.swing.JButton();
+        deleteDoc = new javax.swing.JButton();
+        fileCSV = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -60,9 +70,33 @@ public class Ventana1 extends javax.swing.JFrame {
         title.setText("PRINT-IT");
         background.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
 
-        fileCSV.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        fileCSV.setText("DESCARGAR ARCHIVO");
-        background.add(fileCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 170, 40));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imp.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, 270));
+
+        impresora.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        impresora.setForeground(new java.awt.Color(102, 153, 255));
+        impresora.setText("IMPRESORA:");
+        background.add(impresora, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+
+        usuarios.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        usuarios.setForeground(new java.awt.Color(102, 153, 255));
+        usuarios.setText("USUARIOS:");
+        background.add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+
+        documentos.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        documentos.setForeground(new java.awt.Color(102, 153, 255));
+        documentos.setText("DOCUMENTOS:");
+        background.add(documentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        exit.setForeground(new java.awt.Color(255, 0, 0));
+        exit.setText("X");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
+        background.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 60, 30));
 
         addUser.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         addUser.setText("AÑADIR USUARIO");
@@ -77,10 +111,6 @@ public class Ventana1 extends javax.swing.JFrame {
         deleteUser.setText("ELIMINAR USUARIO");
         background.add(deleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, -1, 40));
 
-        createDocument.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        createDocument.setText("CREAR DOCUMENTO");
-        background.add(createDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 150, 40));
-
         printDocument.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         printDocument.setText("ELIMINAR DOCUMENTO");
         printDocument.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +119,18 @@ public class Ventana1 extends javax.swing.JFrame {
             }
         });
         background.add(printDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, -1, 40));
+
+        printDocument1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        printDocument1.setText("IMPRIMIR DOCUMENTO");
+        background.add(printDocument1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 170, 40));
+
+        createDocument.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        createDocument.setText("CREAR DOCUMENTO");
+        background.add(createDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 150, 40));
+
+        freePrinter.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        freePrinter.setText("LIBERAR IMPRESORA");
+        background.add(freePrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 160, 40));
 
         showPrinter.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         showPrinter.setText("MOSTRAR COLA DE IMPRESIÓN");
@@ -99,66 +141,45 @@ public class Ventana1 extends javax.swing.JFrame {
         });
         background.add(showPrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 210, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imp.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, -1, 270));
-
-        freePrinter.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        freePrinter.setText("LIBERAR IMPRESORA");
-        background.add(freePrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 160, 40));
-
         deleteDoc.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         deleteDoc.setText("ELIMINAR DOCUMENTO DE LA COLA");
         background.add(deleteDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 240, 40));
 
-        impresora.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
-        impresora.setForeground(new java.awt.Color(102, 153, 255));
-        impresora.setText("IMPRESORA:");
-        background.add(impresora, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
-
-        usuarios.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
-        usuarios.setForeground(new java.awt.Color(102, 153, 255));
-        usuarios.setText("USUARIOS:");
-        background.add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
-
-        documentos.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
-        documentos.setForeground(new java.awt.Color(102, 153, 255));
-        documentos.setText("DOCUMENTOS:");
-        background.add(documentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
-
-        exit.setForeground(new java.awt.Color(255, 0, 0));
-        exit.setText("X");
-        exit.addActionListener(new java.awt.event.ActionListener() {
+        fileCSV.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        fileCSV.setText("CARGAR ARCHIVO");
+        fileCSV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitActionPerformed(evt);
+                fileCSVActionPerformed(evt);
             }
         });
-        background.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 40, 20));
-
-        printDocument1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        printDocument1.setText("IMPRIMIR DOCUMENTO");
-        background.add(printDocument1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 170, 40));
+        background.add(fileCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 170, 40));
 
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_exitActionPerformed
+
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
-        // TODO add your handling code here:
+       Ventana3 v3 = new Ventana3(this);
     }//GEN-LAST:event_addUserActionPerformed
+
+    private void printDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDocumentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_printDocumentActionPerformed
 
     private void showPrinterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrinterActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_showPrinterActionPerformed
 
-    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_exitActionPerformed
+    private void fileCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileCSVActionPerformed
 
-    private void printDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDocumentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_printDocumentActionPerformed
+        Ventana2 v2 = new Ventana2();
+        
+    }//GEN-LAST:event_fileCSVActionPerformed
 
     /**
      * @param args the command line arguments

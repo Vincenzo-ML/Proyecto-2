@@ -19,7 +19,7 @@ public class Main {
      */
   
     public static void main(String[] args) {
-        Util Util = new Util();
+       // Util Util = new Util();
         /*long st = Util.StartTime();
         Arreglo Arreglo = new Arreglo(5);
         NodoA n = new NodoA(Util.SentTime(st),"gv");
@@ -41,10 +41,10 @@ public class Main {
         Arreglo.removeMin();
         
         Arreglo.print();*/
-        Util.leer_CSV();
+        //Util.leer_CSV();
         
-        /*Ventana1 ventana = new Ventana1();
-        ventana.setVisible(true);*/
+        Ventana0 ventana = new Ventana0();
+        ventana.setVisible(true);
     }
 }
 
