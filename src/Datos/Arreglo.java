@@ -4,7 +4,6 @@
  */
 package Datos;
 import Nodos.NodoA;
-import Objetos.*;
 
 public class Arreglo<T> {
     private Integer head;
@@ -16,7 +15,7 @@ public class Arreglo<T> {
         this.head = null;
         this.Tmax = Tmax;
         this.size = 0;
-        this.array = new NodoA[Tmax];
+        this.array = new NodoA[0];
     }
     
     public Integer getHead() {
@@ -55,82 +54,80 @@ public class Arreglo<T> {
         this.array = array;
     }
     
-    public int len(){
-        return getSize();
+    public int len() {
+        return size;
     }
     
     
-    private void swap(int index1, int index2) {
-        NodoA temp = array[index1];
-        array[index1] = array[index2];
-        array[index2] = temp;
-    }
-
-
-    private int getParentIndex(int index) {
-        return (index - 1) / 2;
-    }
-
-
-    private int getLeftChildIndex(int index) {
-        return 2 * index + 1;
-    }
-
-    
-    private int getRightChildIndex(int index) {
-        return 2 * index + 2;
-    }
-
-
-    public void insert(NodoA element) {
-        if (size >= Tmax) {
-            throw new IllegalStateException("Heap is full");
+    public T get(int index) {
+        
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Invalid index");
         }
 
+        return array[index].getElement();
+    }
 
-        array[size] = element;
+    public void insert(T data) {
+        if (size >= Tmax) {
+            System.out.println("Array is full. Cannot insert more elements.");
+            return;
+        }
 
+        NodoA<T> newNode = new NodoA<>(data);
 
-        int currentIndex = size;
-        while (currentIndex > 0 && array[currentIndex].getTime() < array[getParentIndex(currentIndex)].getTime()) {
-            swap(currentIndex, getParentIndex(currentIndex));
-            currentIndex = getParentIndex(currentIndex);
+        if (isEmpty()) {
+            head = 0;
+            array = new NodoA[Tmax];
+            array[head] = newNode;
+        } else {
+            int newIndex = (head + size) % Tmax;
+            array[newIndex] = newNode;
         }
 
         size++;
     }
+    
+    public void insertAtIndex(T element, int index) {
+    
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+
+        if (size >= Tmax) {
+            throw new IllegalStateException("Array is full");
+        }
 
 
+        for (int i = size - 1; i >= index; i--) {
+            array[i + 1] = array[i];
+        }
 
-    public NodoA removeMin() {
-       if (size == 0) {
-           throw new IllegalStateException("Heap is empty");
-       }
+        array[index] = new NodoA<>(element);
+        size++;
+    }
+    
+    public void replaceAtIndex(T element, int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
 
-       NodoA minElement = array[0];
+        array[index] = new NodoA<>(element);
+    }
 
-       array[0] = array[size - 1];
-       array[size - 1] = null;
-
-       int currentIndex = 0;
-       while (getLeftChildIndex(currentIndex) < size) {
-           int minChildIndex = getLeftChildIndex(currentIndex);
-           if (getRightChildIndex(currentIndex) < size && array[getRightChildIndex(currentIndex)] != null && array[getRightChildIndex(currentIndex)].getTime() <= array[minChildIndex].getTime()) {
-               minChildIndex = getRightChildIndex(currentIndex);
-           }
-
-           if (array[currentIndex] != null && array[minChildIndex] != null && array[currentIndex].getTime() > array[minChildIndex].getTime()) {
-               swap(currentIndex, minChildIndex);
-               currentIndex = minChildIndex;
-           } else {
-               break;
-           }
-       }
-
-       size--;
-
-       return minElement;
-   }
+    public void print() {
+        if (isEmpty()) {
+            System.out.println("The array is empty.");
+        } else {
+            System.out.println("Elements in the array:");
+            for (int i = 0; i < len(); i++) {
+                System.out.print(getArray()[i].getElement() + " ");
+            }
+            System.out.println();
+        }
+ }
+ }
+ 
 
         
 //Ignoren el de eliminar por ahora ya que debo enlazarlo al hash table pero ahi esta el boceto 
@@ -171,16 +168,8 @@ public class Arreglo<T> {
     
     removeMin();
 }
-  */ 
-    public void print() {
-        for (int i = 0; i < size; i++) {
-            System.out.println(array[i].getElement());
-        }
-        System.out.println("");
-} 
+*/
     
-    
-}
 
 
 

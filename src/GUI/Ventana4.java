@@ -4,7 +4,6 @@
  */
 package GUI;
 
-import Datos.*;
 import Objetos.*;
 import javax.swing.JOptionPane;
 
@@ -191,9 +190,7 @@ public class Ventana4 extends javax.swing.JFrame {
         v1.setVisible(true);
     }//GEN-LAST:event_startPageActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

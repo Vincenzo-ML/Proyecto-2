@@ -15,6 +15,7 @@ public class Ventana1 extends javax.swing.JFrame {
     public static Ventana4 v4;
     public static Ventana5 v5;
     public static Ventana6 v6;
+    public static Ventana7 v7;
     public static Guardar g;
 
     Lista<Persona> list = new Lista<>();
@@ -26,7 +27,6 @@ public class Ventana1 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "BIENVENDIO A PRINT-IT! Una aplicación diseñada para imprimir documentos en orden de prioridad y manejar un registro de los usuarios con sus documentos creados. Para empezar, solo debes seleccionar el botón que desees!");
         this.setVisible(true);
         this.setLocationRelativeTo(null);//muestra la interfáz en el centro
-        //v0.setVisible(false);
         this.setSize(780, 502);
 
     }
@@ -44,12 +44,12 @@ public class Ventana1 extends javax.swing.JFrame {
         exit = new javax.swing.JButton();
         addUser = new javax.swing.JButton();
         deleteUser = new javax.swing.JButton();
+        deleteDocument = new javax.swing.JButton();
         printDocument = new javax.swing.JButton();
-        printDocument1 = new javax.swing.JButton();
         createDocument = new javax.swing.JButton();
         freePrinter = new javax.swing.JButton();
         showPrinter = new javax.swing.JButton();
-        deleteDoc = new javax.swing.JButton();
+        deleteDocCola = new javax.swing.JButton();
         fileCSV = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -116,18 +116,23 @@ public class Ventana1 extends javax.swing.JFrame {
         });
         background.add(deleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, 40));
 
+        deleteDocument.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        deleteDocument.setText("ELIMINAR DOCUMENTO");
+        deleteDocument.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteDocumentActionPerformed(evt);
+            }
+        });
+        background.add(deleteDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, 40));
+
         printDocument.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        printDocument.setText("ELIMINAR DOCUMENTO");
+        printDocument.setText("IMPRIMIR DOCUMENTO");
         printDocument.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printDocumentActionPerformed(evt);
             }
         });
-        background.add(printDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, 40));
-
-        printDocument1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        printDocument1.setText("IMPRIMIR DOCUMENTO");
-        background.add(printDocument1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 170, 40));
+        background.add(printDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 170, 40));
 
         createDocument.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         createDocument.setText("CREAR DOCUMENTO");
@@ -151,9 +156,9 @@ public class Ventana1 extends javax.swing.JFrame {
         });
         background.add(showPrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, 210, 40));
 
-        deleteDoc.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        deleteDoc.setText("ELIMINAR DOCUMENTO DE LA COLA DE IMPRESIÓN");
-        background.add(deleteDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 340, 40));
+        deleteDocCola.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        deleteDocCola.setText("ELIMINAR DOCUMENTO DE LA COLA DE IMPRESIÓN");
+        background.add(deleteDocCola, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 340, 40));
 
         fileCSV.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         fileCSV.setText("CARGAR ARCHIVO");
@@ -179,7 +184,7 @@ public class Ventana1 extends javax.swing.JFrame {
         jLabel6.setText("en la cola de impresión");
         background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
 
-        jLabel7.setText("Envía un doc a la cola de impresión");
+        jLabel7.setText("Envía un doc. a la cola de impresión");
         background.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
 
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 500));
@@ -195,9 +200,9 @@ public class Ventana1 extends javax.swing.JFrame {
        Ventana3 v3 = new Ventana3(this);
     }//GEN-LAST:event_addUserActionPerformed
 
-    private void printDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDocumentActionPerformed
+    private void deleteDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDocumentActionPerformed
         Ventana6 v6 = new Ventana6(this);
-    }//GEN-LAST:event_printDocumentActionPerformed
+    }//GEN-LAST:event_deleteDocumentActionPerformed
 
     private void showPrinterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrinterActionPerformed
         // TODO add your handling code here:
@@ -216,9 +221,11 @@ public class Ventana1 extends javax.swing.JFrame {
         Ventana5 v5 = new Ventana5(this);
     }//GEN-LAST:event_createDocumentActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void printDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDocumentActionPerformed
+        Ventana7 v7 = new Ventana7(this);
+    }//GEN-LAST:event_printDocumentActionPerformed
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -255,7 +262,8 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JButton addUser;
     private javax.swing.JPanel background;
     private javax.swing.JButton createDocument;
-    private javax.swing.JButton deleteDoc;
+    private javax.swing.JButton deleteDocCola;
+    private javax.swing.JButton deleteDocument;
     private javax.swing.JButton deleteUser;
     private javax.swing.JLabel documentos;
     private javax.swing.JButton exit;
@@ -270,7 +278,6 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JButton printDocument;
-    private javax.swing.JButton printDocument1;
     private javax.swing.JButton showPrinter;
     private javax.swing.JLabel title;
     private javax.swing.JLabel usuarios;

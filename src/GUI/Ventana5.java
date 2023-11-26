@@ -27,21 +27,28 @@ public class Ventana5 extends javax.swing.JFrame {
         if (v1.list.isEmpty() == false){
             for (int x = 0; x < v1.list.len(); x++){
                 String temp = "";
+                String temp2 = "";
+                String temp3= "";
                 Persona person = v1.list.get(x);
                 String name = person.getName();
                 Lista<Documentos> doc = person.getdocumentos();
                 if (doc.isEmpty()){
-                    temp = name + " --> " + "No hay documentos creados";
+                    temp = name + " --> " ;
+                    temp2 = "No hay documentos creados";
+                    temp3= "";
                 }else{
+                    temp = name ;
+                    temp2= " --> DOCUMENTOS:\n";
                     for (int j=0 ; j < doc.len(); j++){
                         Documentos docs = doc.get(j);
                         String doc_name = docs.getName();
                         int doc_size = docs.gettamaño();
                         String doc_type = docs.gettipo();
-                        temp = name + " --> " + doc_name + " --> "+ doc_size + " --> "+ doc_type+  "\n";
+                        temp3 =  doc_name + " --> "+ doc_size + " --> "+ doc_type+  "\n";
                     }
                 }
-                txtAUser.append("\n" +temp);
+                txtAUser.append("\n" +temp + temp2);
+                txtAUser.append(temp3);
             }
         }
     }
@@ -302,9 +309,7 @@ public class Ventana5 extends javax.swing.JFrame {
         v1.setVisible(true);
     }//GEN-LAST:event_startPageActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -4,26 +4,21 @@
  */
 package GUI;
 
-import Objetos.*;
-import Datos.*;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author diego
  */
-public class Ventana6 extends javax.swing.JFrame {
-    
+public class Ventana7 extends javax.swing.JFrame {
+
     public static Ventana1 v1;
-    /**
-     * Creates new form Ventana6
-     */
-    public Ventana6(Ventana1 v1) {
+    
+    public Ventana7(Ventana1 v1) {
         initComponents();
         this.v1 = v1;
         v1.setVisible(false);
         this.setVisible(true);
-        this.setLocationRelativeTo(null); //muestra la interfáz en el centro
+        this.setLocationRelativeTo(null);
+        this.setSize(780, 502);
     }
 
     /**
@@ -36,8 +31,7 @@ public class Ventana6 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        userName = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
+        docName = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         exit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -46,13 +40,13 @@ public class Ventana6 extends javax.swing.JFrame {
         usuario2 = new javax.swing.JLabel();
         title1 = new javax.swing.JLabel();
         startPage = new javax.swing.JButton();
+        print = new javax.swing.JButton();
         tipo = new javax.swing.JLabel();
-        docName = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
         usuario1 = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
-        next = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -60,18 +54,15 @@ public class Ventana6 extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        userName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        userName.setForeground(new java.awt.Color(204, 204, 204));
-        userName.setBorder(null);
-        userName.addActionListener(new java.awt.event.ActionListener() {
+        docName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        docName.setForeground(new java.awt.Color(204, 204, 204));
+        docName.setBorder(null);
+        docName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameActionPerformed(evt);
+                docNameActionPerformed(evt);
             }
         });
-        jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 330, 30));
-
-        jSeparator3.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 330, 20));
+        jPanel1.add(docName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 330, 30));
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -119,29 +110,28 @@ public class Ventana6 extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 330, 500));
 
+        print.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        print.setText("IMPRIMIR");
+        print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printActionPerformed(evt);
+            }
+        });
+        jPanel1.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
+
         tipo.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         tipo.setText("NOMBRE DEL DOCUMENTO");
         jPanel1.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
-        docName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        docName.setForeground(new java.awt.Color(204, 204, 204));
-        docName.setBorder(null);
-        docName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                docNameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(docName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 330, 30));
-
-        jSeparator2.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 330, 20));
+        jSeparator3.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 330, 20));
 
         usuario1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         usuario1.setText("USUARIO");
         jPanel1.add(usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         title.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
-        title.setText("ELIMINAR DOCUMENTO");
+        title.setText("IMPRIMIR DOCUMENTO");
         jPanel1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         logo.setFont(new java.awt.Font("Roboto Medium", 2, 18)); // NOI18N
@@ -150,16 +140,10 @@ public class Ventana6 extends javax.swing.JFrame {
         logo.setText("PRINT-IT");
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 140, -1));
 
-        next.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        next.setText("GUARDAR");
-        next.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextActionPerformed(evt);
-            }
-        });
-        jPanel1.add(next, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
+        jSeparator2.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 330, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -169,16 +153,14 @@ public class Ventana6 extends javax.swing.JFrame {
         v1.setVisible(true);
     }//GEN-LAST:event_exitActionPerformed
 
-    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameActionPerformed
+    private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
+        this.setVisible(false);
+        v1.setVisible(true);
+    }//GEN-LAST:event_startPageActionPerformed
 
-    private void docNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_docNameActionPerformed
-
-    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
-        try{
+    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
+        
+        /*try{
             String user_name = userName.getText();
             String doc_name = docName.getText();
             //Si está vacío...
@@ -186,45 +168,44 @@ public class Ventana6 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "ERROR! Debe ingresar el nombre del usuario");
             }else if (doc_name.isEmpty()){
                 JOptionPane.showMessageDialog(null, "ERROR! Debe ingresar el nombre del documento");
-            }else{  
+            }else{
                 //si el usuario existe en el programa...
                 if (v1.list.EncontrarPersona(user_name) != null){
-                    
+
                     for (int x = 0; x < v1.list.len(); x++){
                         Persona person = v1.list.get(x);
                         //ubicamos al usuario...
                         if (person.getName().equals(user_name) == true){
                             Lista<Documentos> docList = person.getdocumentos();
-                            
-                                if(docList.EncontrarDocumento(doc_name) != null){
-                                    
-                                    for (int j = 0; j < docList.len(); j++){
-                                        Documentos doc_person = docList.get(j);
-                                        
-                                    }
-                                }else{
-                                    JOptionPane.showMessageDialog(null, "ERROR! El documento: " + doc_name + " no existe en el programa, intente crearlo.");
+
+                            if(docList.EncontrarDocumento(doc_name) != null){
+
+                                for (int j = 0; j < docList.len(); j++){
+                                    Documentos doc_person = docList.get(j);
+                                    //Imprimimos el documento ??????????????
                                 }
-                        }    
-                                    
+                            }else{
+                                JOptionPane.showMessageDialog(null, "ERROR! El documento: " + doc_name + " no existe en el programa, intente crearlo.");
+                            }
+                        }
+
                     }
                     //MOSTRARLOSSSS
                     /*txtAUser.setText("");
                     mostrarUsuarios();*/
                     //JOptionPane.showMessageDialog(null, "Se eliminó con éxito al documento: " + doc_name);
-                }else{
+              /*  }else{
                     JOptionPane.showMessageDialog(null, "ERROR el usuario: " + user_name + " no está añadido en el programa, intente registrarlo!");
                 }
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al leer el archivo de usuarios.");
-        }
-    }//GEN-LAST:event_nextActionPerformed
+        }*/
+    }//GEN-LAST:event_printActionPerformed
 
-    private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
-        this.setVisible(false);
-        v1.setVisible(true);
-    }//GEN-LAST:event_startPageActionPerformed
+    private void docNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_docNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,20 +224,20 @@ public class Ventana6 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana6(v1).setVisible(true);
+                new Ventana7(v1).setVisible(true);
             }
         });
     }
@@ -270,13 +251,12 @@ public class Ventana6 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel logo;
-    private javax.swing.JButton next;
+    private javax.swing.JButton print;
     private javax.swing.JButton startPage;
     private javax.swing.JLabel tipo;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;
     private javax.swing.JTextArea txtAUser;
-    private javax.swing.JTextField userName;
     private javax.swing.JLabel usuario1;
     private javax.swing.JLabel usuario2;
     private javax.swing.JLabel usuario3;

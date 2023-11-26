@@ -9,18 +9,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-import Objetos.*;
 import Datos.*;
 
 
-/**
- *
- * @author diego
- */
 public class Ventana2 extends javax.swing.JFrame {
     
     public static Ventana1 v1;
@@ -139,8 +131,6 @@ public class Ventana2 extends javax.swing.JFrame {
         Lista text = v1.func.leer_CSV(file);
         //agregamos los usuarios leidos a la lista de usuarios
         v1.list = text;
-        
-        
         //mostramos en la interfaz
         File file_name = file.getAbsoluteFile();
         if(file_name.getName().equals("")){
@@ -163,16 +153,12 @@ public class Ventana2 extends javax.swing.JFrame {
     }//GEN-LAST:event_routeActionPerformed
 
     private void saveTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveTxtActionPerformed
-        //this.savefile();
+
         this.setVisible(false);
         v1.setVisible(true);
-        
-        //PILASSS CON GUARDAR
     }//GEN-LAST:event_saveTxtActionPerformed
      
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -204,19 +190,6 @@ public class Ventana2 extends javax.swing.JFrame {
             }
         });
     }
-    /*
-    private void savefile(){
-       String info = content.getText();
-       try{
-            users =v1.f.ListaUsuarios(info);
-            v1.f.write_Txt(users, "test\\usuarios.txt");
-            v1.grafo.setususarios(users);
-            v1.grafo.ImprecionPR();
-            JOptionPane.showMessageDialog(null, "Guardado exitoso");
-       }catch(Exception e){
-           JOptionPane.showMessageDialog(null, e);
-       }
-    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea content;
