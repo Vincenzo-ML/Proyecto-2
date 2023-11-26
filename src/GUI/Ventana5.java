@@ -25,8 +25,8 @@ public class Ventana5 extends javax.swing.JFrame {
     
     public void mostrarDocumentos(){
         if (v1.list.isEmpty() == false){
-            String temp = "";
             for (int x = 0; x < v1.list.len(); x++){
+                String temp = "";
                 Persona person = v1.list.get(x);
                 String name = person.getName();
                 Lista<Documentos> doc = person.getdocumentos();
@@ -41,9 +41,8 @@ public class Ventana5 extends javax.swing.JFrame {
                         temp = name + " --> " + doc_name + " --> "+ doc_size + " --> "+ doc_type+  "\n";
                     }
                 }
-                
+                txtAUser.append("\n" +temp);
             }
-            txtAUser.append("\n" +temp);
         }
     }
     @SuppressWarnings("unchecked")
@@ -237,7 +236,6 @@ public class Ventana5 extends javax.swing.JFrame {
         String type = cmbType.getSelectedItem().toString();
         String sizetxt = docSize.getText();
         try{
-            int size = Integer.parseInt(sizetxt);
             //Si está vacío...
             if (user.isEmpty()){
                 JOptionPane.showMessageDialog(null, "ERROR! Debe ingresar el nombre del usuario");
@@ -246,20 +244,18 @@ public class Ventana5 extends javax.swing.JFrame {
             }else if (sizetxt.isEmpty()){
                 JOptionPane.showMessageDialog(null, "ERROR! Debe ingresar el tamaño del documento");
             }else{
-                //si el usuario existe en el programa...
-                if (v1.list.EncontrarPersona(user) != null){
-                    
-                    for (int x = 0; x < v1.list.len(); x++){
-                        
-                        Persona person = v1.list.get(x);
-                        if (person.getName().equals(user) == true){
-                            
-                            Lista<Documentos> docList = person.getdocumentos();
-                            for (int j = 0; j < docList.len(); j++){
-       
-                                Documentos doc_person = docList.get(j);
-                                if(docList.EncontrarDocumento(doc) == null){
-                                    
+                //Si el tamaño no es un número..
+                if (sizetxt.matches("[0-9]+")){
+                    int size = Integer.parseInt(sizetxt); 
+                    //si el usuario existe en el programa...
+                    if (v1.list.EncontrarPersona(user) != null){
+                        for (int x = 0; x < v1.list.len(); x++){
+                            Persona person = v1.list.get(x);
+                            //encontramos a la persona en la lista
+                            if (person.getName().equals(user) == true){
+                                Lista<Documentos> docList = person.getdocumentos();
+                                //obtenemos la lista de documentos del usuario
+                                if(docList.isEmpty()){
                                     Documentos newdoc = new Documentos(doc, size, type);
                                     docList.append(newdoc);
                                     person.addDocumento(newdoc);
@@ -267,13 +263,32 @@ public class Ventana5 extends javax.swing.JFrame {
                                     mostrarDocumentos();
                                     JOptionPane.showMessageDialog(null, "Se creó con éxito el documento: " + doc);
                                 }else{
-                                    JOptionPane.showMessageDialog(null, "ERROR! Ya existe un documento con ese nombre");
+                                    //si la lista de documentos no está vacía, la recorremos...
+                                    for (int j = 0; j < docList.len(); j++){
+                                        Documentos doc_person = docList.get(j);
+                                        //revisamos que el nombre del documento no esté repetido...
+                                        if(docList.EncontrarDocumento(doc) == null){
+                                            Documentos newdoc = new Documentos(doc, size, type);
+                                            docList.append(newdoc);
+                                            person.addDocumento(newdoc);
+                                            txtAUser.setText("");
+                                            mostrarDocumentos();
+                                            JOptionPane.showMessageDialog(null, "Se creó con éxito el documento: " + doc);
+                                            break;
+                                        }else{
+                                            JOptionPane.showMessageDialog(null, "ERROR! Ya existe un documento con ese nombre");
+                                            break;
+                                        }
+                                    } 
                                 }
-                            }                     
+
+                            }
                         }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "ERROR el usuario: " + user + " no está añadido en el programa, intente registrarlo!");
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null, "ERROR el usuario: " + user + " no está añadido en el programa, intente registrarlo!");
+                    JOptionPane.showMessageDialog(null, "DATO INVÁLIDO! El tamaño del documento debe ser un número");
                 }
             }
         }catch(Exception e){

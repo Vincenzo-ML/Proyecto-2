@@ -12,12 +12,14 @@ public class Documentos {
     private String Name;
     private int tamaño;
     private String tipo;
+    private Long Tiempo;
 
 
-    public Documentos(String Name, int tamaño, String tipo) {
+    public Documentos(String Name, int tamaño, String tipo, Long Tiempo) {
         this.Name = Name;
         this.tamaño = tamaño;
         this.tipo = tipo;
+        this.Tiempo = null;
     }
 
     public String getName() {
@@ -47,6 +49,12 @@ public class Documentos {
     public void settipo(String tipo) {
         this.tipo = tipo;
     }
-
     
+    public Long Gettime(){
+        return Tiempo;
+    }
+    
+    public void setTime(Long Tiempo){
+        this.Tiempo = Tiempo;
+    }
 }

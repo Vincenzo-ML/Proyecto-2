@@ -2,14 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Datos;
 import Objetos.*;
 
-
-/**
- *
- * @author PC
- */
 public class HashTable {
     
     private int size;
@@ -66,13 +65,11 @@ public class HashTable {
         tabla[index].pop(index);
     }
     
-    public void print(){
-        for (int i =0; i< getSize(); i++ ){    
+    public void printData() {
+        for (int i = 0; i < tabla.length; i++) {
+            System.out.println("Lista " + i + ":");
             tabla[i].print();
+            System.out.println();
         }
     }
-    
-    
-    
-
 }

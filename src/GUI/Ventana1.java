@@ -15,7 +15,6 @@ public class Ventana1 extends javax.swing.JFrame {
     public static Ventana4 v4;
     public static Ventana5 v5;
     public static Ventana6 v6;
-    public static Ventana0 v0;
     public static Guardar g;
 
     Lista<Persona> list = new Lista<>();
@@ -24,7 +23,7 @@ public class Ventana1 extends javax.swing.JFrame {
     public Ventana1() {
         initComponents();
         
-        JOptionPane.showMessageDialog(null, "BIENVENDIO A PRINT-IT!, una aplicación diseñada para imprimir documentos en orden de prioridad y manejar un registro de los usuarios con sus documentos creados. Para empezar, solo debes seleccionar el botón que desees!");
+        JOptionPane.showMessageDialog(null, "BIENVENDIO A PRINT-IT! Una aplicación diseñada para imprimir documentos en orden de prioridad y manejar un registro de los usuarios con sus documentos creados. Para empezar, solo debes seleccionar el botón que desees!");
         this.setVisible(true);
         this.setLocationRelativeTo(null);//muestra la interfáz en el centro
         //v0.setVisible(false);
@@ -54,6 +53,10 @@ public class Ventana1 extends javax.swing.JFrame {
         fileCSV = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -65,26 +68,26 @@ public class Ventana1 extends javax.swing.JFrame {
         title.setFont(new java.awt.Font("Roboto Black", 2, 60)); // NOI18N
         title.setForeground(new java.awt.Color(0, 51, 255));
         title.setText("PRINT-IT");
-        background.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
+        background.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imp.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, -1, 270));
+        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, -1, 270));
 
         impresora.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         impresora.setForeground(new java.awt.Color(102, 153, 255));
         impresora.setText("IMPRESORA:");
-        background.add(impresora, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+        background.add(impresora, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
 
         usuarios.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         usuarios.setForeground(new java.awt.Color(102, 153, 255));
         usuarios.setText("USUARIOS:");
-        background.add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        background.add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
         documentos.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         documentos.setForeground(new java.awt.Color(102, 153, 255));
         documentos.setText("DOCUMENTOS:");
-        background.add(documentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        background.add(documentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         exit.setForeground(new java.awt.Color(255, 0, 0));
         exit.setText("X");
@@ -102,7 +105,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 addUserActionPerformed(evt);
             }
         });
-        background.add(addUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 160, 40));
+        background.add(addUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 160, 40));
 
         deleteUser.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         deleteUser.setText("ELIMINAR USUARIO");
@@ -111,7 +114,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 deleteUserActionPerformed(evt);
             }
         });
-        background.add(deleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, 40));
+        background.add(deleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, 40));
 
         printDocument.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         printDocument.setText("ELIMINAR DOCUMENTO");
@@ -120,11 +123,11 @@ public class Ventana1 extends javax.swing.JFrame {
                 printDocumentActionPerformed(evt);
             }
         });
-        background.add(printDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, 40));
+        background.add(printDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, 40));
 
         printDocument1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         printDocument1.setText("IMPRIMIR DOCUMENTO");
-        background.add(printDocument1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 170, 40));
+        background.add(printDocument1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 170, 40));
 
         createDocument.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         createDocument.setText("CREAR DOCUMENTO");
@@ -133,11 +136,11 @@ public class Ventana1 extends javax.swing.JFrame {
                 createDocumentActionPerformed(evt);
             }
         });
-        background.add(createDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 160, 40));
+        background.add(createDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 160, 40));
 
         freePrinter.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         freePrinter.setText("LIBERAR IMPRESORA");
-        background.add(freePrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 160, 40));
+        background.add(freePrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 160, 40));
 
         showPrinter.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         showPrinter.setText("MOSTRAR COLA DE IMPRESIÓN");
@@ -146,11 +149,11 @@ public class Ventana1 extends javax.swing.JFrame {
                 showPrinterActionPerformed(evt);
             }
         });
-        background.add(showPrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 210, 40));
+        background.add(showPrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, 210, 40));
 
         deleteDoc.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
-        deleteDoc.setText("ELIMINAR DOCUMENTO DE LA COLA");
-        background.add(deleteDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 240, 40));
+        deleteDoc.setText("ELIMINAR DOCUMENTO DE LA COLA DE IMPRESIÓN");
+        background.add(deleteDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 340, 40));
 
         fileCSV.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         fileCSV.setText("CARGAR ARCHIVO");
@@ -159,13 +162,25 @@ public class Ventana1 extends javax.swing.JFrame {
                 fileCSVActionPerformed(evt);
             }
         });
-        background.add(fileCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 170, 40));
+        background.add(fileCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 170, 40));
 
         jLabel2.setText("Permite subir un archivo con ");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         jLabel3.setText("usuarios y sus prioridades");
-        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, 20));
+        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, 20));
+
+        jLabel4.setText("Salir / Guardar");
+        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, -1, -1));
+
+        jLabel5.setText("Elimina aquellos que no están ");
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
+
+        jLabel6.setText("en la cola de impresión");
+        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
+
+        jLabel7.setText("Envía un doc a la cola de impresión");
+        background.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
 
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 500));
 
@@ -181,7 +196,7 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_addUserActionPerformed
 
     private void printDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDocumentActionPerformed
-        // TODO add your handling code here:
+        Ventana6 v6 = new Ventana6(this);
     }//GEN-LAST:event_printDocumentActionPerformed
 
     private void showPrinterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrinterActionPerformed
@@ -250,6 +265,10 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JButton printDocument;
     private javax.swing.JButton printDocument1;
     private javax.swing.JButton showPrinter;

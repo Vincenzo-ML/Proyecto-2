@@ -36,6 +36,12 @@ public class Ventana6 extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         exit = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAUser = new javax.swing.JTextArea();
+        usuario3 = new javax.swing.JLabel();
+        usuario2 = new javax.swing.JLabel();
+        title1 = new javax.swing.JLabel();
+        startPage = new javax.swing.JButton();
         tipo = new javax.swing.JLabel();
         userName2 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
@@ -52,7 +58,6 @@ public class Ventana6 extends javax.swing.JFrame {
 
         userName1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         userName1.setForeground(new java.awt.Color(204, 204, 204));
-        userName1.setText("Ingrese su nombre de usuario");
         userName1.setBorder(null);
         userName1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +70,7 @@ public class Ventana6 extends javax.swing.JFrame {
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 330, 20));
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exit.setForeground(new java.awt.Color(255, 0, 0));
         exit.setText("X");
@@ -73,25 +79,41 @@ public class Ventana6 extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
+        jPanel2.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 50, 30));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(146, Short.MAX_VALUE)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(464, Short.MAX_VALUE))
-        );
+        txtAUser.setEditable(false);
+        txtAUser.setBackground(new java.awt.Color(255, 255, 255));
+        txtAUser.setColumns(20);
+        txtAUser.setRows(5);
+        jScrollPane1.setViewportView(txtAUser);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 250, 500));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 310, 280));
+
+        usuario3.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        usuario3.setForeground(new java.awt.Color(255, 255, 255));
+        usuario3.setText("NOMBRE USUARIO --> NOMBRE DOC --> TAMAÑO DOC ");
+        jPanel2.add(usuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 320, 20));
+
+        usuario2.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        usuario2.setForeground(new java.awt.Color(255, 255, 255));
+        usuario2.setText("--> PRIORIDAD DOC.");
+        jPanel2.add(usuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 320, 20));
+
+        title1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        title1.setForeground(new java.awt.Color(255, 255, 255));
+        title1.setText("LISTA DE USUARIOS");
+        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+
+        startPage.setForeground(new java.awt.Color(255, 0, 0));
+        startPage.setText("VOLVER A LA PÁGINA DE INICIO");
+        startPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startPageActionPerformed(evt);
+            }
+        });
+        jPanel2.add(startPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 250, 30));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 330, 500));
 
         tipo.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         tipo.setText("NOMBRE DEL DOCUMENTO");
@@ -99,7 +121,6 @@ public class Ventana6 extends javax.swing.JFrame {
 
         userName2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         userName2.setForeground(new java.awt.Color(204, 204, 204));
-        userName2.setText("Ingrese el nombre del documento");
         userName2.setBorder(null);
         userName2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +155,7 @@ public class Ventana6 extends javax.swing.JFrame {
         });
         jPanel1.add(next, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,6 +216,11 @@ public class Ventana6 extends javax.swing.JFrame {
         }*/
     }//GEN-LAST:event_nextActionPerformed
 
+    private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
+        this.setVisible(false);
+        v1.setVisible(true);
+    }//GEN-LAST:event_startPageActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -234,14 +260,20 @@ public class Ventana6 extends javax.swing.JFrame {
     private javax.swing.JButton exit;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel logo;
     private javax.swing.JButton next;
+    private javax.swing.JButton startPage;
     private javax.swing.JLabel tipo;
     private javax.swing.JLabel title;
+    private javax.swing.JLabel title1;
+    private javax.swing.JTextArea txtAUser;
     private javax.swing.JTextField userName1;
     private javax.swing.JTextField userName2;
     private javax.swing.JLabel usuario1;
+    private javax.swing.JLabel usuario2;
+    private javax.swing.JLabel usuario3;
     // End of variables declaration//GEN-END:variables
 }

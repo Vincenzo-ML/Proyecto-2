@@ -3,16 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Datos;
+import Nodos.NodoA;
 import Objetos.*;
-/**
- *
- * @author Enzo
- */
+
 public class Arreglo<T> {
     private Integer head;
     private int Tmax;
     private int size;
-    private NodoA[] array;
+    private NodoA<T>[] array;
     
     public Arreglo(int Tmax) {
         this.head = null;
@@ -24,7 +22,7 @@ public class Arreglo<T> {
     public Integer getHead() {
         return head;
     }
-
+    
     public void setHead(Integer head) {
         this.head = head;
     }
@@ -62,7 +60,7 @@ public class Arreglo<T> {
     }
     
     
-     private void swap(int index1, int index2) {
+    private void swap(int index1, int index2) {
         NodoA temp = array[index1];
         array[index1] = array[index2];
         array[index2] = temp;
@@ -101,6 +99,7 @@ public class Arreglo<T> {
 
         size++;
     }
+
 
 
     public NodoA removeMin() {
@@ -182,5 +181,8 @@ public class Arreglo<T> {
     
     
 }
+
+
+
 
 

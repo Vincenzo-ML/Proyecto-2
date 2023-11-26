@@ -14,10 +14,6 @@ import Datos.*;
 import Objetos.*;
 import java.io.PrintWriter;
 
-/**
- *
- * @author Enzo
- */
 public class Util {
     
     public long StartTime() {
@@ -81,24 +77,6 @@ public class Util {
         }
         return lista;
     }
-    /*public void guardarCSV(){
-        try{
-            BufferedWriter writer = new BufferedWriter();
-            
-        }
-    }
-    
-    public void guardarDatos(){
-        JFileChooser selectorCarpeta = new JFileChooser();
-        selectorCarpeta.setCurrentDirectory(new File("."));
-        selectorCarpeta.setDialogType("Seleccione la carpeta para guardar los archivos CSV...");
-        selectorCarpeta.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        selectorCarpeta.setAcceptAllFileFilterUsed(false);
-        
-        File carpeta = selectorCarpeta.getCurrentDirectory();
-        
-    }
-    */
 
     public void writeCsvFile(Lista usuarios, String filePath) {
         if ("".equals(filePath)){

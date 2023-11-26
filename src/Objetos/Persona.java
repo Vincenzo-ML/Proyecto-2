@@ -17,7 +17,7 @@ public class Persona {
 
     public Persona() {
     }
-
+    
     public Persona(String name, String prioridad ,Lista<Documentos> documentos) {
         this.name = name;
         this.prioridad = prioridad;
