@@ -53,8 +53,9 @@ public class Ventana2 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         content = new javax.swing.JTextArea();
         saveTxt = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,7 +70,7 @@ public class Ventana2 extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 40, 30));
+        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 60, 40));
 
         openFile.setBackground(new java.awt.Color(0, 153, 255));
         openFile.setText("Abrir Archivo");
@@ -105,14 +106,17 @@ public class Ventana2 extends javax.swing.JFrame {
         });
         jPanel1.add(saveTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 110, 30));
 
+        title.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
+        title.setText("DESCARGAR ARCHIVO");
+        jPanel1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel2.setText("(Regresar)");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, -1, -1));
+
         jLabel1.setBackground(new java.awt.Color(102, 153, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carpeta.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 510, 530));
-
-        title.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
-        title.setText("DESCARGAR ARCHIVO");
-        jPanel1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 500));
 
@@ -195,6 +199,7 @@ public class Ventana2 extends javax.swing.JFrame {
     private javax.swing.JTextArea content;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton openFile;

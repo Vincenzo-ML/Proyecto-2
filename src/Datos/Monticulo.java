@@ -68,17 +68,17 @@ public class Monticulo<T> {
     }
 
 
-    private int getParentIndex(int index) {
+    public int getParentIndex(int index) {
         return (index - 1) / 2;
     }
 
 
-    private int getLeftChildIndex(int index) {
+    public int getLeftChildIndex(int index) {
         return 2 * index + 1;
     }
 
     
-    private int getRightChildIndex(int index) {
+    public int getRightChildIndex(int index) {
         return 2 * index + 2;
     }
 
@@ -131,5 +131,13 @@ public class Monticulo<T> {
        size--;
 
        return minElement;
-   }
+    }
+    
+    public NMonticulo<T> getNode(int index) {
+        if (index >= 0 && index < size) {
+            return array[index];
+        } else {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+    } 
 }

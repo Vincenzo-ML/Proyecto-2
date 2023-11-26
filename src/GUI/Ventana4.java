@@ -6,6 +6,7 @@ package GUI;
 
 import Objetos.*;
 import javax.swing.JOptionPane;
+import Datos.*;
 
 
 public class Ventana4 extends javax.swing.JFrame {
@@ -28,13 +29,42 @@ public class Ventana4 extends javax.swing.JFrame {
         if (v1.list.isEmpty() == false){
             for (int x = 0; x < v1.list.len(); x++){
                 String temp = "";
+                String temp2 = "";
+                String temp3= "";
+                Persona person = v1.list.get(x);
+                String name = person.getName();
+                String prioridad = person.getprioridad();
+                Lista<Documentos> doc = person.getdocumentos();
+                if (doc.isEmpty()){
+                    temp = name + " --> " + prioridad+ " --> ";
+                    temp2 = "No hay documentos creados";
+                    temp3= "";
+                }else{
+                    temp = name + " --> " + prioridad+ " --> ";
+                    temp2= " --> DOCUMENTOS:\n";
+                    for (int j=0 ; j < doc.len(); j++){
+                        Documentos docs = doc.get(j);
+                        String doc_name = docs.getName();
+                        int doc_size = docs.gettamaño();
+                        String doc_type = docs.gettipo();
+                        temp3 +=  doc_name + " --> "+ doc_size + " --> "+ doc_type+  "\n";
+                    }
+                }
+                txtAUser.append("\n" +temp + temp2);
+                txtAUser.append(temp3);
+            }
+        }
+    /*  public void mostrarUsuarios(){
+        if (v1.list.isEmpty() == false){
+            for (int x = 0; x < v1.list.len(); x++){
+                String temp = "";
                 Persona person = v1.list.get(x);
                 String name = person.getName();
                 String priority = person.getprioridad();
                 temp = name + " --> "+ priority + "\n";
                 txtAUser.append("\n" +temp);
             }
-        }
+        }*/
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -50,8 +80,9 @@ public class Ventana4 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAUser = new javax.swing.JTextArea();
         title1 = new javax.swing.JLabel();
-        usuario1 = new javax.swing.JLabel();
         usuario2 = new javax.swing.JLabel();
+        usuario3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         next = new javax.swing.JButton();
         startPage = new javax.swing.JButton();
 
@@ -106,27 +137,31 @@ public class Ventana4 extends javax.swing.JFrame {
         txtAUser.setRows(5);
         jScrollPane1.setViewportView(txtAUser);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 280, 300));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 340, 300));
 
         title1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         title1.setForeground(new java.awt.Color(255, 255, 255));
         title1.setText("LISTA DE USUARIOS");
-        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
-        usuario1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        usuario1.setForeground(new java.awt.Color(255, 255, 255));
-        usuario1.setText("PRIORIDAD");
-        jPanel2.add(usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
-
-        usuario2.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        usuario2.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         usuario2.setForeground(new java.awt.Color(255, 255, 255));
-        usuario2.setText("NOMBRE --> ");
-        jPanel2.add(usuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+        usuario2.setText("TAMAÑO DOC --> PRIORIDAD DOC.");
+        jPanel2.add(usuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 320, 20));
+
+        usuario3.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        usuario3.setForeground(new java.awt.Color(255, 255, 255));
+        usuario3.setText("NOMBRE USUARIO --> PRIORIDAD U. --> NOMBRE DOC --> ");
+        jPanel2.add(usuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 320, 20));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("(Regresar)");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 380, 500));
 
         next.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        next.setText("GUARDAR");
+        next.setText("ELIMINAR");
         next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextActionPerformed(evt);
@@ -225,6 +260,7 @@ public class Ventana4 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exit;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -237,7 +273,7 @@ public class Ventana4 extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAUser;
     private javax.swing.JTextField userName;
     private javax.swing.JLabel usuario;
-    private javax.swing.JLabel usuario1;
     private javax.swing.JLabel usuario2;
+    private javax.swing.JLabel usuario3;
     // End of variables declaration//GEN-END:variables
 }

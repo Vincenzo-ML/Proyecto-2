@@ -5,18 +5,15 @@
 package GUI;
 
 import javax.swing.JOptionPane;
-import Objetos.*;
 import Datos.*;
-import Nodos.*;
-import static GUI.Ventana5.v1;
+import Objetos.*;
 
 
-
-public class Ventana7 extends javax.swing.JFrame {
+public class Ventana8 extends javax.swing.JFrame {
 
     public static Ventana1 v1;
     
-    public Ventana7(Ventana1 v1) {
+    public Ventana8(Ventana1 v1) {
         initComponents();
         this.v1 = v1;
         v1.setVisible(false);
@@ -26,6 +23,7 @@ public class Ventana7 extends javax.swing.JFrame {
         mostrarDocumentos();
     }
 
+    
     @SuppressWarnings("unchecked")
     public void mostrarDocumentos(){
         if (v1.list.isEmpty() == false){
@@ -60,7 +58,15 @@ public class Ventana7 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        usuario1 = new javax.swing.JLabel();
+        userName = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        tipo = new javax.swing.JLabel();
         docName = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        print = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         exit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -69,21 +75,45 @@ public class Ventana7 extends javax.swing.JFrame {
         usuario2 = new javax.swing.JLabel();
         title1 = new javax.swing.JLabel();
         startPage = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        print = new javax.swing.JButton();
-        tipo = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        usuario1 = new javax.swing.JLabel();
-        title = new javax.swing.JLabel();
-        logo = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        userName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logo.setFont(new java.awt.Font("Roboto Medium", 2, 18)); // NOI18N
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/favicon.png"))); // NOI18N
+        logo.setText("PRINT-IT");
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 140, -1));
+
+        title.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
+        title.setText("ELIMINAR DOCUMENTO");
+        jPanel1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        usuario1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        usuario1.setText("USUARIO");
+        jPanel1.add(usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+
+        userName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        userName.setForeground(new java.awt.Color(204, 204, 204));
+        userName.setBorder(null);
+        userName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameActionPerformed(evt);
+            }
+        });
+        jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 330, 30));
+
+        jSeparator3.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 330, 20));
+
+        tipo.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        tipo.setText("NOMBRE DEL DOCUMENTO");
+        jPanel1.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         docName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         docName.setForeground(new java.awt.Color(204, 204, 204));
@@ -93,7 +123,19 @@ public class Ventana7 extends javax.swing.JFrame {
                 docNameActionPerformed(evt);
             }
         });
-        jPanel1.add(docName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 330, 30));
+        jPanel1.add(docName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 330, 30));
+
+        jSeparator2.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 330, 20));
+
+        print.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        print.setText("ELIMINAR");
+        print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printActionPerformed(evt);
+            }
+        });
+        jPanel1.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -105,7 +147,7 @@ public class Ventana7 extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        jPanel2.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 50, 30));
+        jPanel2.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 50, 30));
 
         txtAUser.setEditable(false);
         txtAUser.setBackground(new java.awt.Color(255, 255, 255));
@@ -139,72 +181,31 @@ public class Ventana7 extends javax.swing.JFrame {
         });
         jPanel2.add(startPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 250, 30));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("(Regresar)");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("(Regresar)");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 330, 500));
 
-        print.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        print.setText("IMPRIMIR");
-        print.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printActionPerformed(evt);
-            }
-        });
-        jPanel1.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
-
-        tipo.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        tipo.setText("NOMBRE DEL DOCUMENTO");
-        jPanel1.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
-
-        jSeparator3.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 330, 20));
-
-        usuario1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        usuario1.setText("USUARIO");
-        jPanel1.add(usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
-
-        title.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
-        title.setText("IMPRIMIR DOCUMENTO");
-        jPanel1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
-
-        logo.setFont(new java.awt.Font("Roboto Medium", 2, 18)); // NOI18N
-        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/favicon.png"))); // NOI18N
-        logo.setText("PRINT-IT");
-        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 140, -1));
-
-        jSeparator2.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 330, 20));
-
-        userName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        userName.setForeground(new java.awt.Color(204, 204, 204));
-        userName.setBorder(null);
-        userName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 330, 30));
+        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        jLabel1.setText("EN LA IMPRESORA");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        this.setVisible(false);
-        v1.setVisible(true);
-    }//GEN-LAST:event_exitActionPerformed
+    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNameActionPerformed
 
-    private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
-        this.setVisible(false);
-        v1.setVisible(true);
-    }//GEN-LAST:event_startPageActionPerformed
+    private void docNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_docNameActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
-        
+
         try{
             String user_name = userName.getText();
             String doc_name = docName.getText();
@@ -227,42 +228,19 @@ public class Ventana7 extends javax.swing.JFrame {
 
                                 for (int j = 0; j < docList.len(); j++){
                                     Documentos doc_person = docList.get(j);
-                                    long time = v1.func.SentTime(v1.st);
-                                    if (doc_person.gettipo().equalsIgnoreCase("Prioritario") == true){
-                                        String newTipo = person.getprioridad();
-                                        if (newTipo.equalsIgnoreCase("Prioridad Alta")== true){
-                                            long finaltime = time / 4;
-                                            NMonticulo nodo = new NMonticulo(finaltime, doc_person);
-                                            docList.pop(j);
-                                            v1.monticulo.insert(nodo);
-                                        }else if (newTipo.equalsIgnoreCase("Prioridad Media") == true){
-                                            long finaltime = time /3;
-                                            NMonticulo nodo = new NMonticulo(finaltime, doc_person);
-                                            docList.pop(j);
-                                            v1.monticulo.insert(nodo);
-                                        }else{
-                                            long finaltime = time/2;
-                                            NMonticulo nodo = new NMonticulo(finaltime, doc_person);
-                                            docList.pop(j);
-                                            v1.monticulo.insert(nodo);
-                                        }
-                                    }else{
-                                        NMonticulo nodo = new NMonticulo(time, doc_person);
-                                        docList.pop(j);
-                                        v1.monticulo.insert(nodo);
-                                    }
-                                    
+
                                     //Imprimimos el documento ??????????????
                                 }
-                                txtAUser.setText("");
-                                mostrarDocumentos();
-                                JOptionPane.showMessageDialog(null, "Se envió a la improsora con éxito el documento: " + doc_name);
-                                break;
                             }else{
                                 JOptionPane.showMessageDialog(null, "ERROR! El documento: " + doc_name + " no existe en el programa, intente crearlo.");
                             }
                         }
+
                     }
+                    //MOSTRARLOSSSS
+                    /*txtAUser.setText("");
+                    mostrarUsuarios();*/
+                    //JOptionPane.showMessageDialog(null, "Se eliminó con éxito al documento: " + doc_name);
                 }else{
                     JOptionPane.showMessageDialog(null, "ERROR el usuario: " + user_name + " no está añadido en el programa, intente registrarlo!");
                 }
@@ -272,15 +250,19 @@ public class Ventana7 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_printActionPerformed
 
-    private void docNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_docNameActionPerformed
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        this.setVisible(false);
+        v1.setVisible(true);
+    }//GEN-LAST:event_exitActionPerformed
 
-    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameActionPerformed
+    private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
+        this.setVisible(false);
+        v1.setVisible(true);
+    }//GEN-LAST:event_startPageActionPerformed
 
-    
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -295,20 +277,20 @@ public class Ventana7 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana7.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana7(v1).setVisible(true);
+                new Ventana8(v1).setVisible(true);
             }
         });
     }
@@ -317,6 +299,7 @@ public class Ventana7 extends javax.swing.JFrame {
     private javax.swing.JTextField docName;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

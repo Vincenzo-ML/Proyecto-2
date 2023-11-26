@@ -44,7 +44,7 @@ public class Ventana5 extends javax.swing.JFrame {
                         String doc_name = docs.getName();
                         int doc_size = docs.gettamaño();
                         String doc_type = docs.gettipo();
-                        temp3 =  doc_name + " --> "+ doc_size + " --> "+ doc_type+  "\n";
+                        temp3 += doc_name + " --> "+ doc_size + " --> "+ doc_type+ "\n";
                     }
                 }
                 txtAUser.append("\n" +temp + temp2);
@@ -72,6 +72,7 @@ public class Ventana5 extends javax.swing.JFrame {
         title1 = new javax.swing.JLabel();
         usuario2 = new javax.swing.JLabel();
         usuario3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         userName = new javax.swing.JTextField();
         usuario1 = new javax.swing.JLabel();
         docName = new javax.swing.JTextField();
@@ -131,7 +132,7 @@ public class Ventana5 extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        jPanel2.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 50, 30));
+        jPanel2.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 50, 30));
 
         txtAUser.setEditable(false);
         txtAUser.setBackground(new java.awt.Color(255, 255, 255));
@@ -152,8 +153,8 @@ public class Ventana5 extends javax.swing.JFrame {
 
         title1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         title1.setForeground(new java.awt.Color(255, 255, 255));
-        title1.setText("LISTA DE USUARIOS");
-        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+        title1.setText("LISTA DE DOCUMENTOS");
+        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         usuario2.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         usuario2.setForeground(new java.awt.Color(255, 255, 255));
@@ -164,6 +165,10 @@ public class Ventana5 extends javax.swing.JFrame {
         usuario3.setForeground(new java.awt.Color(255, 255, 255));
         usuario3.setText("NOMBRE USUARIO --> NOMBRE DOC --> TAMAÑO DOC ");
         jPanel2.add(usuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 320, 20));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("(Regresar)");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 350, 500));
 
@@ -258,50 +263,50 @@ public class Ventana5 extends javax.swing.JFrame {
                     if (v1.list.EncontrarPersona(user) != null){
                         for (int x = 0; x < v1.list.len(); x++){
                             Persona person = v1.list.get(x);
-                            //encontramos a la persona en la lista
-                            if (person.getName().equals(user) == true){
+                            if (person.getName().equals(user) == true) {
                                 Lista<Documentos> docList = person.getdocumentos();
-                                //obtenemos la lista de documentos del usuario
-                                if(docList.isEmpty()){
-                                    Documentos newdoc = new Documentos(doc, size, type);
-                                    docList.append(newdoc);
+                                // Obtenemos la lista de documentos del usuario
+                                if (docList.isEmpty()) {
+                                    Documentos newdoc = new Documentos(doc, size, type);                
                                     person.addDocumento(newdoc);
                                     txtAUser.setText("");
                                     mostrarDocumentos();
                                     JOptionPane.showMessageDialog(null, "Se creó con éxito el documento: " + doc);
-                                }else{
-                                    //si la lista de documentos no está vacía, la recorremos...
-                                    for (int j = 0; j < docList.len(); j++){
+                                } else {
+                                    // Si la lista de documentos no está vacía, la recorremos...
+                                    boolean documentExists = false;
+                                    for (int j = 0; j < docList.len(); j++) {
                                         Documentos doc_person = docList.get(j);
-                                        //revisamos que el nombre del documento no esté repetido...
-                                        if(docList.EncontrarDocumento(doc) == null){
-                                            Documentos newdoc = new Documentos(doc, size, type);
-                                            docList.append(newdoc);
-                                            person.addDocumento(newdoc);
-                                            txtAUser.setText("");
-                                            mostrarDocumentos();
-                                            JOptionPane.showMessageDialog(null, "Se creó con éxito el documento: " + doc);
-                                            break;
-                                        }else{
-                                            JOptionPane.showMessageDialog(null, "ERROR! Ya existe un documento con ese nombre");
+                                        // Revisamos que el nombre del documento no esté repetido...
+                                        if (doc_person.getName().equals(doc)) {
+                                            documentExists = true;
                                             break;
                                         }
-                                    } 
+                                    }
+                                    if (documentExists) {
+                                        JOptionPane.showMessageDialog(null, "ERROR! Ya existe un documento con ese nombre");
+                                    } else {
+                                        Documentos newdoc = new Documentos(doc, size, type);                                
+                                        person.addDocumento(newdoc);
+                                        txtAUser.setText("");
+                                        mostrarDocumentos();
+                                        JOptionPane.showMessageDialog(null, "Se creó con éxito el documento: " + doc);
+                                    }
                                 }
-
                             }
                         }
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "ERROR el usuario: " + user + " no está añadido en el programa, intente registrarlo!");
                     }
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "DATO INVÁLIDO! El tamaño del documento debe ser un número");
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        }
-        
+    }
+       
+                
     }//GEN-LAST:event_nextActionPerformed
 
     private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
@@ -347,6 +352,7 @@ public class Ventana5 extends javax.swing.JFrame {
     private javax.swing.JTextField docName;
     private javax.swing.JTextField docSize;
     private javax.swing.JButton exit;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

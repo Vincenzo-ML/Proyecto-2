@@ -16,14 +16,18 @@ public class Ventana1 extends javax.swing.JFrame {
     public static Ventana5 v5;
     public static Ventana6 v6;
     public static Ventana7 v7;
+    public static Ventana8 v8;
+    public static Ventana9 v9;
     public static Guardar g;
 
     Lista<Persona> list = new Lista<>();
     Util func = new Util();
+    long st = 0;
+    Monticulo monticulo = new Monticulo(50);
     
     public Ventana1() {
         initComponents();
-        
+        this.st = func.StartTime();
         JOptionPane.showMessageDialog(null, "BIENVENDIO A PRINT-IT! Una aplicación diseñada para imprimir documentos en orden de prioridad y manejar un registro de los usuarios con sus documentos creados. Para empezar, solo debes seleccionar el botón que desees!");
         this.setVisible(true);
         this.setLocationRelativeTo(null);//muestra la interfáz en el centro
@@ -145,6 +149,11 @@ public class Ventana1 extends javax.swing.JFrame {
 
         freePrinter.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         freePrinter.setText("LIBERAR IMPRESORA");
+        freePrinter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                freePrinterActionPerformed(evt);
+            }
+        });
         background.add(freePrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 160, 40));
 
         showPrinter.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
@@ -158,6 +167,11 @@ public class Ventana1 extends javax.swing.JFrame {
 
         deleteDocCola.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         deleteDocCola.setText("ELIMINAR DOCUMENTO DE LA COLA DE IMPRESIÓN");
+        deleteDocCola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteDocColaActionPerformed(evt);
+            }
+        });
         background.add(deleteDocCola, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 340, 40));
 
         fileCSV.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
@@ -201,11 +215,12 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_addUserActionPerformed
 
     private void deleteDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDocumentActionPerformed
+        JOptionPane.showMessageDialog(null, "ELIMINAR DOCUMENTO! Aquí podras eliminar aquellos documentos que no se han mandado a imprimir. Toma en consideración que si el documento fue mandado a imprimir no aparecerá en la lista de documentos.");
         Ventana6 v6 = new Ventana6(this);
     }//GEN-LAST:event_deleteDocumentActionPerformed
 
     private void showPrinterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrinterActionPerformed
-        // TODO add your handling code here:
+        Ventana9 v9 = new Ventana9(this);
     }//GEN-LAST:event_showPrinterActionPerformed
 
     private void fileCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileCSVActionPerformed
@@ -218,12 +233,21 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteUserActionPerformed
 
     private void createDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createDocumentActionPerformed
+        JOptionPane.showMessageDialog(null, "CREAR DOCUMENTO! Toma en consideración el tipo de documento, si escoges 'prioritario', la prioridad del documento al mandarlo a imprimir dependerá de la prioridad asignada al usuario. De lo contrario, dependerá del tiempo de ejecución de los demás documentos en la impresora");
         Ventana5 v5 = new Ventana5(this);
     }//GEN-LAST:event_createDocumentActionPerformed
 
     private void printDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDocumentActionPerformed
         Ventana7 v7 = new Ventana7(this);
     }//GEN-LAST:event_printDocumentActionPerformed
+
+    private void deleteDocColaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDocColaActionPerformed
+        Ventana8 v8 = new Ventana8(this);
+    }//GEN-LAST:event_deleteDocColaActionPerformed
+
+    private void freePrinterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freePrinterActionPerformed
+        JOptionPane.showMessageDialog(null, "LIBERAR IMPRESORA! Se imprimirá el documento que esté de primero según el orden de prioridad");
+    }//GEN-LAST:event_freePrinterActionPerformed
 
     
     public static void main(String args[]) {

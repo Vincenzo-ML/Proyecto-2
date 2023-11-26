@@ -4,6 +4,7 @@
  */
 package Nodos;
 
+
 public class NMonticulo<T> {
     private long Time;
     private T element;
@@ -37,7 +38,9 @@ public class NMonticulo<T> {
 
     public void setNext(Integer next) {
         this.next = next;
-    }    
+    }   
+    
+    
     
 }
 
