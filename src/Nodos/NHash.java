@@ -5,7 +5,7 @@
 package Nodos;
 
 import Datos.Lista;
-
+import Objetos.*;
 /**
  *
  * @author Enzo
@@ -13,30 +13,40 @@ import Datos.Lista;
 public class NHash<T> {
     
     private String key;
-    private Lista docs;
+    private Documentos doc;
+    private Long t;
     
 
-    public NHash(String Key, Lista element) {
+    public NHash(String Key, Documentos element, Long t) {
         this.key = Key;
-        this.docs = element;
+        this.doc = element;
+        this.t = t;
     }
     
-    public Lista getElementhash() {
-        return docs;
+    public Documentos getElementhash() {
+        return doc;
     }
 
-    public void setElementhash(Lista element) {
-        this.docs = element;
+    public void setElementhash(Documentos element) {
+        this.doc = element;
+    }
+    
+    public String getKey() {
+        return key;
+    }
+    
+    public void setKey(String x) {
+        this.key = x;
     }
 
-    /*public long getTime() {
-        return Time;
+    public long getTime() {
+        return t;
     }
     
     public void settime(Long x) {
-        this.Time = x;
+        this.t = x;
     }
-    */
+    
 }
 
 
