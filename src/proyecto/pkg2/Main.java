@@ -27,7 +27,11 @@ public class Main {
         Documentos s = new Documentos("albe", "ew", "sece");
         NHash n = new NHash("albe", s, st);
         x.insert(n);
-        x.printData();
+        x.insert(n);
+        x.insert(n);x.insert(n);x.insert(n);
+        
+        
+
   
         
     

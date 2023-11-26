@@ -46,7 +46,7 @@ public class HashTable {
              }
     }
     
-    public void deleteBydoc(String key) {
+    public void deleteByPerson(String key) {
         int index = key.hashCode() % max;
 
         if (tabla.get(index) != null) {
@@ -59,6 +59,55 @@ public class HashTable {
                 }
             }  
         }
+    }
+    
+    
+    public Lista FindAllDocbyPerson(String key){
+        int index = key.hashCode() % max;
+        Lista<NHash> Ls = new Lista<NHash>();
+        
+        if (tabla.get(index) != null) {
+            Lista<NHash> lista = tabla.get(index);
+            for (int i= 0;i<lista.getSize(); i++){
+                NHash x = lista.get(i);
+                if(x.getElementhash().getName().equals(key)){
+                    Ls.append(x);
+                }
+            }  
+        }
+        return Ls;
+    }
+    
+    
+    public void deleteByTime(Long T, String key) {
+        int index = key.hashCode() % max;
+
+        if (tabla.get(index) != null) {
+            Lista<NHash> lista = tabla.get(index);
+            for (int i= 0;i<lista.getSize(); i++){
+                NHash x = lista.get(i);
+                if(x.getTime() == T){
+                    lista.pop(i);
+                    tabla.replaceAtIndex(lista, index);
+                }
+            }  
+        }
+    }
+    
+    public Long FindTime(String key, Documentos sdx){
+        int index = key.hashCode() % max;
+        Long xx = null;
+        
+        if (tabla.get(index) != null) {
+            Lista<NHash> lista = tabla.get(index);
+            for (int i= 0;i<lista.getSize(); i++){
+                NHash x = lista.get(i);
+                if(x.getElementhash().equals(sdx)){
+                   xx = x.getTime();
+                }
+            }  
+        }
+        return xx;
     }
 
     public int getSize() {
@@ -81,8 +130,12 @@ public class HashTable {
         for (int i = 0; i < tabla.getTmax(); i++) {
             System.out.println("Lista " + i + ":");
             Lista x = tabla.get(i);
-            System.out.println(x.get(0));
+            
+            for(int yy = 0; yy < x.getSize(); yy++) {          
+                System.out.println(x.get(i));
         }
+    }
+                }
     }
   /*  private int HashFunction(String usuario){
         int hashCode = usuario.hashCode();
@@ -116,7 +169,7 @@ public class HashTable {
             System.out.println();
         }
     }*/
-}
+
   
 
     
