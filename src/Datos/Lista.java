@@ -4,6 +4,7 @@
  */
 package Datos;
 
+import Nodos.Nodo;
 import javax.swing.JOptionPane;
 
 /**
