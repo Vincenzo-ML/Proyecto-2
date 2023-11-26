@@ -101,15 +101,10 @@ public class Ventana0 extends javax.swing.JFrame {
     }//GEN-LAST:event_startActionPerformed
 
     private void fileCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileCSVActionPerformed
-        this.setVisible(false);
-        Ventana1 v1 = new Ventana1();
-        v1.setVisible(true);
-        this.dispose();
-        
         
         
         this.setVisible(false);
-        Ventana2 v2 = new Ventana2();
+        Ventana2 v2 = new Ventana2(this);
         v2.setVisible(true);
     }//GEN-LAST:event_fileCSVActionPerformed
 

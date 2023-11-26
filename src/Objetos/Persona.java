@@ -13,7 +13,7 @@ import Datos.Lista;
 public class Persona {
     private String name;
     private String prioridad;
-    private Lista<Documentos> documentos;
+    private Lista<Documentos> documentos = new Lista<> ();
 
     public Persona() {
     }

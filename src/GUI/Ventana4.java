@@ -19,22 +19,20 @@ public class Ventana4 extends javax.swing.JFrame {
         v1.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null); //muestra la interfáz en el centro
-        this.setSize(710,502);
+        this.setSize(780, 502);
         mostrarUsuarios();
         
     }
     
     @SuppressWarnings("unchecked")
     public void mostrarUsuarios(){
-        this.txtAUser.setText("NOMBRE DE USUARIO, TIPO DE USUARIO");
-        
         if (v1.list.isEmpty() == false){
             for (int x = 0; x < v1.list.len(); x++){
                 String temp = "";
                 Persona person = v1.list.get(x);
-                String person_name = person.getName();
-                String person_prioridad = person.getprioridad();
-                temp = person_name + person_prioridad + "\n";
+                String name = person.getName();
+                String priority = person.getprioridad();
+                temp = name + " --> "+ priority + "\n";
                 txtAUser.append("\n" +temp);
             }
         }
@@ -53,7 +51,10 @@ public class Ventana4 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAUser = new javax.swing.JTextArea();
         title1 = new javax.swing.JLabel();
+        usuario1 = new javax.swing.JLabel();
+        usuario2 = new javax.swing.JLabel();
         next = new javax.swing.JButton();
+        startPage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -73,21 +74,20 @@ public class Ventana4 extends javax.swing.JFrame {
 
         usuario.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         usuario.setText("USUARIO");
-        jPanel1.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        jPanel1.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         userName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         userName.setForeground(new java.awt.Color(204, 204, 204));
-        userName.setText("Ingrese el nombre de usuario");
         userName.setBorder(null);
         userName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userNameActionPerformed(evt);
             }
         });
-        jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 330, 30));
+        jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 330, 30));
 
         jSeparator3.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 330, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 330, 20));
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,7 +99,7 @@ public class Ventana4 extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        jPanel2.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 16, 40, 30));
+        jPanel2.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 50, 30));
 
         txtAUser.setEditable(false);
         txtAUser.setBackground(new java.awt.Color(255, 255, 255));
@@ -107,13 +107,24 @@ public class Ventana4 extends javax.swing.JFrame {
         txtAUser.setRows(5);
         jScrollPane1.setViewportView(txtAUser);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 150, 280, 300));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 280, 300));
 
-        title1.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
-        title1.setText("USUARIOS");
-        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+        title1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        title1.setForeground(new java.awt.Color(255, 255, 255));
+        title1.setText("LISTA DE USUARIOS");
+        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 360, 500));
+        usuario1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        usuario1.setForeground(new java.awt.Color(255, 255, 255));
+        usuario1.setText("PRIORIDAD");
+        jPanel2.add(usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
+
+        usuario2.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        usuario2.setForeground(new java.awt.Color(255, 255, 255));
+        usuario2.setText("NOMBRE --> ");
+        jPanel2.add(usuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 380, 500));
 
         next.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         next.setText("GUARDAR");
@@ -122,9 +133,18 @@ public class Ventana4 extends javax.swing.JFrame {
                 nextActionPerformed(evt);
             }
         });
-        jPanel1.add(next, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
+        jPanel1.add(next, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 500));
+        startPage.setForeground(new java.awt.Color(255, 0, 0));
+        startPage.setText("VOLVER A LA PÁGINA DE INICIO");
+        startPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startPageActionPerformed(evt);
+            }
+        });
+        jPanel1.add(startPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 250, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,47 +159,37 @@ public class Ventana4 extends javax.swing.JFrame {
     }//GEN-LAST:event_exitActionPerformed
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
-        /*this.name_user = "@" + nameUser.getText().toLowerCase();
         try{
+            String name = userName.getText();
             //Si está vacío...
-            if (name_user.isEmpty()){
+            if (name.isEmpty()){
                 JOptionPane.showMessageDialog(null, "ERROR! Debe ingresar el nombre del usuario");
-
             }else{
-                //si el usuario existe en el programa..
-                if (v1.grafo.EncontrarPersona(name_user) != null){
-                    this.add_conocido = "@" + conocidosUser.getText().toLowerCase();
-
-                    //si la relación ya existe...
-                    if (v1.grafo.edgeExist(name_user, add_conocido, v1.grafo.EncontrarPersona(name_user)) == true){
-                        JOptionPane.showMessageDialog(null, "La relación entre: " + name_user +" y "+ add_conocido+" ya existe!");
-
-                        //si la relacion es entre un mismo usuario...
-                    }else if (name_user.equals(add_conocido)){
-                        JOptionPane.showMessageDialog(null, "ERROR! No se puede hacer una relación entre un mismo usuarios.");
-
-                    }else{
-                        //Si existe el usuario de la relacion en el programa...
-                        if(v1.grafo.EncontrarPersona(add_conocido)!= null){
-                            v1.grafo.AgregarArco(name_user, add_conocido);
-                            JOptionPane.showMessageDialog(null, "Se agregó con éxito la relación entre: " + name_user +" y "+ add_conocido);
-                            this.setVisible(false);
-                            v1.setVisible(true);
-
-                        }else{
-                            JOptionPane.showMessageDialog(null, "ERROR: el usuario "+ add_conocido+ " no está añadido en el programa, intente registrarlo!");
+                //si el usuario existe en el programa...
+                if (v1.list.EncontrarPersona(name) != null){
+                    for (int x = 0; x < v1.list.len(); x++){
+                        Persona person = v1.list.get(x);
+                        if (person.getName().equals(name) == true){
+                            v1.list.pop(x);
                         }
                     }
-
+                    txtAUser.setText("");
+                    mostrarUsuarios();
+                    JOptionPane.showMessageDialog(null, "Se eliminó con éxito al usuario: " + name);
                 }else{
-                    JOptionPane.showMessageDialog(null, "ERROR: el usuario "+ name_user+ " no está añadido en el programa, intente registrarlo!");
+                    JOptionPane.showMessageDialog(null, "ERROR el usuario: " + name + " no está añadido en el programa, intente registrarlo!");
                 }
-
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al leer el archivo de usuarios.");
-        }*/
+        }
+        
     }//GEN-LAST:event_nextActionPerformed
+
+    private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
+        this.setVisible(false);
+        v1.setVisible(true);
+    }//GEN-LAST:event_startPageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,10 +234,13 @@ public class Ventana4 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel logo;
     private javax.swing.JButton next;
+    private javax.swing.JButton startPage;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;
     private javax.swing.JTextArea txtAUser;
     private javax.swing.JTextField userName;
     private javax.swing.JLabel usuario;
+    private javax.swing.JLabel usuario1;
+    private javax.swing.JLabel usuario2;
     // End of variables declaration//GEN-END:variables
 }

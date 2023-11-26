@@ -4,6 +4,7 @@
  */
 package Datos;
 
+import Objetos.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -186,6 +187,8 @@ public class Lista<T> {
         }
         return 0;
     }    
+    
+    
 
     
     public void replace(int position, T data){
@@ -243,33 +246,24 @@ public class Lista<T> {
         }
     }
     
-    public Nodo <T> next(Nodo<T> pValor){
-        if (pValor != this.getTail()){
-            return pValor.getNext();
-        }else{
-            return null;
-        }
-    }
-    public Nodo <T> beforeLast(){
-        if (this.isEmpty()){
-            return null;
-        }else{
-            Nodo<T> pAux = this.getHead();
-            while (pAux.getNext()!= this.getTail()){
-                pAux = this.next(pAux);
+    public Persona EncontrarPersona(String name){
+        for(int x = 0; x < this.len(); x++){
+            Persona person = (Persona) this.get(x);
+            if(person.getName().equals(name)){
+                return person;
             }
-            return pAux;
         }
-        
+        return null;
     }
-    public void postinsert(T x, Nodo <T> pValor){
-        Nodo <T> pNew = new Nodo <>(x);
-        if(this.isEmpty()){
-            this.head = pNew;
-        }else{
-            pNew.setNext(pValor.getNext());
-            pValor.setNext(pNew);
+    
+    public Documentos EncontrarDocumento(String name){
+        for(int x = 0; x < this.len(); x++){
+            Documentos doc = (Documentos) this.get(x);
+            if(doc.getName().equals(name)){
+                return doc;
+            }
         }
-        size++;
+        return null;
     }
+
 }

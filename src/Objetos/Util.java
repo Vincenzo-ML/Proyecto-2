@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import Datos.*;
 import Objetos.*;
+import java.io.PrintWriter;
 
 /**
  *
@@ -51,7 +52,6 @@ public class Util {
     public Lista<Persona> leer_CSV(File file){
         //Cargamos un archivo
         //File file = JFileChooser();
-        Persona persona = new Persona();
         Lista<Persona> lista = new Lista<>();
         try{        
             //abrimos el archivo.csv en br
@@ -59,20 +59,19 @@ public class Util {
             //leemos una linea del archivo
             String line = br.readLine();
             while (line!= null){
+                Persona persona = new Persona();
                 String [] array= line.split(",");
                 String p = "";
                 if (array[1].equalsIgnoreCase(" prioridad_baja")){
-                    p += " prioridad_baja";
+                    p = " Prioridad Baja";
                 }else if(array[1].equalsIgnoreCase(" prioridad_media")){
-                    p += " prioridad media";
+                    p = " Prioridad Media";
                 }else if(array[1].equalsIgnoreCase(" prioridad_alta")){
-                    p += " prioridad alta";
+                    p = " Prioridad Alta";
                 }
                 persona.setName(array[0]);
                 persona.setprioridad(p);
-                JOptionPane.showMessageDialog(null, persona.getName() + persona.getprioridad());
                 lista.append(persona);
-                //persona.addDocumento(documents);
                 line = br.readLine();
             }
             //cerramos el buffer
@@ -82,7 +81,47 @@ public class Util {
         }
         return lista;
     }
+    /*public void guardarCSV(){
+        try{
+            BufferedWriter writer = new BufferedWriter();
+            
+        }
+    }
     
+    public void guardarDatos(){
+        JFileChooser selectorCarpeta = new JFileChooser();
+        selectorCarpeta.setCurrentDirectory(new File("."));
+        selectorCarpeta.setDialogType("Seleccione la carpeta para guardar los archivos CSV...");
+        selectorCarpeta.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        selectorCarpeta.setAcceptAllFileFilterUsed(false);
+        
+        File carpeta = selectorCarpeta.getCurrentDirectory();
+        
+    }
+    */
+
+    public void writeCsvFile(Lista usuarios, String filePath) {
+        if ("".equals(filePath)){
+            JOptionPane.showMessageDialog(null, "Error! No hay ruta de acceso.");
+        } 
+        else{
+            String str = "usuario, tipo\n";
+            if (usuarios.isEmpty()== false){
+                for (int x = 0; x < usuarios.len(); x++){
+                    Persona person = (Persona) usuarios.get(x);
+                    str =  str + person.getName() + ", " + person.getprioridad() +"\n";
+                }
+            }
+            try{
+               PrintWriter pw = new PrintWriter(filePath); 
+               pw.print(str);
+               pw.close();
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Error! No se ha escrito sobre el archivo.");
+            }
+        }
+    }
+
 
 }
 

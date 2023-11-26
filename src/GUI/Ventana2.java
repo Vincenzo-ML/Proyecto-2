@@ -24,14 +24,12 @@ import Datos.*;
 public class Ventana2 extends javax.swing.JFrame {
     
     public static Ventana1 v1;
-    public static Ventana0 v0;
     public static String archivo;
     
-    public Ventana2() {
+    public Ventana2(Ventana1 v1) {
         initComponents();
         this.v1 = v1;
-        //this.users = new Lista<> ();
-        v0.setVisible(false);
+        v1.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null); //muestra la interfáz en el centro
         this.setSize(710,502);
@@ -135,16 +133,12 @@ public class Ventana2 extends javax.swing.JFrame {
     }//GEN-LAST:event_exitActionPerformed
 
     private void openFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openFileActionPerformed
-        Util func = new Util();
         //JFile Chooser, abrirmos un archivo.
-        File file = func.JFileChooser();
+        File file = v1.func.JFileChooser();
         //Leemos el archivo
-        Lista text = func.leer_CSV(file);
+        Lista text = v1.func.leer_CSV(file);
         //agregamos los usuarios leidos a la lista de usuarios
         v1.list = text;
-        for (int x = 0; x < v1.list.len(); x++){
-            JOptionPane.showMessageDialog(rootPane, v1.list.getHead().getData());
-        }
         
         
         //mostramos en la interfaz
@@ -172,8 +166,7 @@ public class Ventana2 extends javax.swing.JFrame {
         //this.savefile();
         this.setVisible(false);
         v1.setVisible(true);
-//        SistemaOperativo ventanasistema = new SistemaOperativo();
-//        ventanasistema.setVisible(true);
+        
         //PILASSS CON GUARDAR
     }//GEN-LAST:event_saveTxtActionPerformed
      
@@ -207,7 +200,7 @@ public class Ventana2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana2().setVisible(true);
+                new Ventana2(v1).setVisible(true);
             }
         });
     }

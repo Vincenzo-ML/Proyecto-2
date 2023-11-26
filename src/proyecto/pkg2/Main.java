@@ -43,7 +43,7 @@ public class Main {
         Arreglo.print();*/
         //Util.leer_CSV();
         
-        Ventana0 ventana = new Ventana0();
+        Ventana1 ventana = new Ventana1();
         ventana.setVisible(true);
     }
 }
