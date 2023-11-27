@@ -3,9 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Datos;
-import Nodos.*;
-
+import Nodos.NMonticulo;
 import Nodos.NodoA;
+import Objetos.Persona;
+import org.graphstream.graph.Edge;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 
 public class Monticulo<T> {
     private Integer head;
@@ -140,4 +144,88 @@ public class Monticulo<T> {
             throw new IndexOutOfBoundsException("Invalid index");
         }
     } 
+    
+    public String getNodeName(int index) {
+        if (index >= 0 && index < size) {
+            return array[index].getName();
+        } else {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+    } 
+    
+    public void eliminardemonticulo(Long t) {
+        Lista<NMonticulo> lista = new Lista();
+        
+        for(int i = 0; i < array.length; i++){
+            if(removeMin().getTime() == t){
+                removeMin();
+            } else {
+                if(removeMin().getTime() == t){
+                    NMonticulo xxxx = removeMin();
+                    lista.append(xxxx);
+                }
+            }
+        }
+        
+        for(int i = 0; i < lista.len(); i++){
+            insert(lista.get(i));
+        }
+    }
+    
+    public String reg(Graph g, String name, int intento){
+        int x = 0;
+        if(g.getNode(name) != null){
+            String name1 = name + intento;
+            name = reg(g, name1, x + 1);
+        }
+        return name;
+    }
+    
+    public void VerArbol() {
+        System.setProperty("org.graphstream.ui", "swing");
+        Graph g = new SingleGraph("hp");
+    
+        for (int x = 0; x < size; x++) {
+            String name = array[x].getName();
+            if (g.getNode(name) == null) {
+                g.addNode(name);
+                g.getNode(name).setAttribute("ui.label", name);
+            } else {
+                String nameN = reg(g,name, 1);
+                g.addNode(nameN);
+                g.getNode(nameN).setAttribute("ui.label", nameN);
+            
+                String edgeId = name + nameN;
+                if (g.getEdge(edgeId) == null) {
+                    g.addEdge(edgeId, name, nameN, true);
+                }
+            }
+        }
+
+        for (int x = 0; x < size; x++) {
+            int leftChildIndex = getLeftChildIndex(x);
+            int rightChildIndex = getRightChildIndex(x);
+
+            if (leftChildIndex < size) {
+                NMonticulo leftChild = array[leftChildIndex];
+                String edgeId = array[x].getName() + leftChild.getName();
+                if (g.getEdge(edgeId) == null) {
+                    g.addEdge(edgeId, array[x].getName(), leftChild.getName(), true);
+                }
+            }
+
+            if (rightChildIndex < size) {
+                NMonticulo rightChild = array[rightChildIndex];
+                String edgeId = array[x].getName() + rightChild.getName();
+                if (g.getEdge(edgeId) == null) {
+                    g.addEdge(edgeId, array[x].getName(), rightChild.getName(), true);
+                }
+            }
+        }
+
+        g.setAttribute("ui.stylesheet", "node { text-alignment: under; }");
+
+        Viewer viewer = g.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+    }
 }

@@ -4,24 +4,30 @@
  */
 package Nodos;
 
+import Objetos.Documentos;
+
 
 public class NMonticulo<T> {
     private long Time;
-    private T element;
+    private Documentos element;
     private Integer next;
 
-    public NMonticulo(long Time, T element) {
+    public NMonticulo(long Time, Documentos element) {
         this.Time = Time;
         this.element = element;
         this.next = null;
     }
     
-    public T getElementmont() {
+    public Documentos getElementmont() {
         return element;
     }
 
-    public void setElementmont(T element) {
+    public void setElementmont(Documentos element) {
         this.element = element;
+    }
+    
+    public String getName(){
+        return element.getName();
     }
 
     public long getTime() {
@@ -40,7 +46,9 @@ public class NMonticulo<T> {
         this.next = next;
     }   
     
-    
+    public int gettamaño(){
+        return element.gettamaño();
+    }
     
 }
 

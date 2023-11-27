@@ -84,7 +84,6 @@ public class Ventana4 extends javax.swing.JFrame {
         usuario3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         next = new javax.swing.JButton();
-        startPage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -134,6 +133,7 @@ public class Ventana4 extends javax.swing.JFrame {
         txtAUser.setEditable(false);
         txtAUser.setBackground(new java.awt.Color(255, 255, 255));
         txtAUser.setColumns(20);
+        txtAUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtAUser.setRows(5);
         jScrollPane1.setViewportView(txtAUser);
 
@@ -168,15 +168,6 @@ public class Ventana4 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(next, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, -1, -1));
-
-        startPage.setForeground(new java.awt.Color(255, 0, 0));
-        startPage.setText("VOLVER A LA PÁGINA DE INICIO");
-        startPage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startPageActionPerformed(evt);
-            }
-        });
-        jPanel1.add(startPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 250, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 500));
 
@@ -220,11 +211,6 @@ public class Ventana4 extends javax.swing.JFrame {
         
     }//GEN-LAST:event_nextActionPerformed
 
-    private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
-        this.setVisible(false);
-        v1.setVisible(true);
-    }//GEN-LAST:event_startPageActionPerformed
-
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -267,7 +253,6 @@ public class Ventana4 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel logo;
     private javax.swing.JButton next;
-    private javax.swing.JButton startPage;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;
     private javax.swing.JTextArea txtAUser;

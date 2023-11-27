@@ -7,6 +7,7 @@ package GUI;
 import javax.swing.JOptionPane;
 import Datos.*;
 import Objetos.*;
+import Nodos.*;
 
 
 public class Ventana8 extends javax.swing.JFrame {
@@ -74,8 +75,8 @@ public class Ventana8 extends javax.swing.JFrame {
         usuario3 = new javax.swing.JLabel();
         usuario2 = new javax.swing.JLabel();
         title1 = new javax.swing.JLabel();
-        startPage = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        showPrinter2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -152,6 +153,7 @@ public class Ventana8 extends javax.swing.JFrame {
         txtAUser.setEditable(false);
         txtAUser.setBackground(new java.awt.Color(255, 255, 255));
         txtAUser.setColumns(20);
+        txtAUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtAUser.setRows(5);
         jScrollPane1.setViewportView(txtAUser);
 
@@ -172,18 +174,18 @@ public class Ventana8 extends javax.swing.JFrame {
         title1.setText("LISTA DE DOCUMENTOS");
         jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        startPage.setForeground(new java.awt.Color(255, 0, 0));
-        startPage.setText("VOLVER A LA PÁGINA DE INICIO");
-        startPage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startPageActionPerformed(evt);
-            }
-        });
-        jPanel2.add(startPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 250, 30));
-
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("(Regresar)");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, -1, -1));
+
+        showPrinter2.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        showPrinter2.setText("VER IMPRESORA");
+        showPrinter2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPrinter2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(showPrinter2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 140, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 330, 500));
 
@@ -205,7 +207,7 @@ public class Ventana8 extends javax.swing.JFrame {
     }//GEN-LAST:event_docNameActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
-
+        
         try{
             String user_name = userName.getText();
             String doc_name = docName.getText();
@@ -217,37 +219,33 @@ public class Ventana8 extends javax.swing.JFrame {
             }else{
                 //si el usuario existe en el programa...
                 if (v1.list.EncontrarPersona(user_name) != null){
-
                     for (int x = 0; x < v1.list.len(); x++){
                         Persona person = v1.list.get(x);
                         //ubicamos al usuario...
                         if (person.getName().equals(user_name) == true){
-                            Lista<Documentos> docList = person.getdocumentos();
-
-                            if(docList.EncontrarDocumento(doc_name) != null){
-
-                                for (int j = 0; j < docList.len(); j++){
-                                    Documentos doc_person = docList.get(j);
-
-                                    //Imprimimos el documento ??????????????
+                            Lista<Documentos> docsList = v1.hasht.FindAllDocbyPerson(user_name);
+                            if(docsList.EncontrarDocumento(doc_name) != null){
+                                for(int j = 0; j < docsList.len(); j++){
+                                Documentos doc = docsList.get(j);
+                                Long time = v1.hasht.FindTime(user_name, doc);
+                                v1.monticulo.eliminardemonticulo(time);
                                 }
                             }else{
-                                JOptionPane.showMessageDialog(null, "ERROR! El documento: " + doc_name + " no existe en el programa, intente crearlo.");
-                            }
+                                JOptionPane.showMessageDialog(null, "ERROR! El documento: " + doc_name + " no existe en el programa para ese usuario, intente crearlo.");
+                            }    
                         }
-
                     }
                     //MOSTRARLOSSSS
-                    /*txtAUser.setText("");
-                    mostrarUsuarios();*/
-                    //JOptionPane.showMessageDialog(null, "Se eliminó con éxito al documento: " + doc_name);
+                    txtAUser.setText("");
+                    mostrarDocumentos();
+                    JOptionPane.showMessageDialog(null, "Se eliminó de la cola de impresión al documento: " + doc_name);
                 }else{
                     JOptionPane.showMessageDialog(null, "ERROR el usuario: " + user_name + " no está añadido en el programa, intente registrarlo!");
                 }
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al leer el archivo de usuarios.");
-        }
+        }    
     }//GEN-LAST:event_printActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -255,10 +253,9 @@ public class Ventana8 extends javax.swing.JFrame {
         v1.setVisible(true);
     }//GEN-LAST:event_exitActionPerformed
 
-    private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
-        this.setVisible(false);
-        v1.setVisible(true);
-    }//GEN-LAST:event_startPageActionPerformed
+    private void showPrinter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrinter2ActionPerformed
+        v1.monticulo.VerArbol();
+    }//GEN-LAST:event_showPrinter2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,7 +304,7 @@ public class Ventana8 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel logo;
     private javax.swing.JButton print;
-    private javax.swing.JButton startPage;
+    private javax.swing.JButton showPrinter2;
     private javax.swing.JLabel tipo;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;

@@ -56,7 +56,6 @@ public class Ventana3 extends javax.swing.JFrame {
         usuario1 = new javax.swing.JLabel();
         usuario2 = new javax.swing.JLabel();
         title1 = new javax.swing.JLabel();
-        startPage = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         save = new javax.swing.JButton();
         cmbPrioridad = new javax.swing.JComboBox<>();
@@ -120,6 +119,7 @@ public class Ventana3 extends javax.swing.JFrame {
         txtAUser.setEditable(false);
         txtAUser.setBackground(new java.awt.Color(255, 255, 255));
         txtAUser.setColumns(20);
+        txtAUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtAUser.setRows(5);
         jScrollPane3.setViewportView(txtAUser);
 
@@ -139,15 +139,6 @@ public class Ventana3 extends javax.swing.JFrame {
         title1.setForeground(new java.awt.Color(255, 255, 255));
         title1.setText("LISTA DE USUARIOS");
         jPanel1.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
-
-        startPage.setForeground(new java.awt.Color(255, 0, 0));
-        startPage.setText("VOLVER A LA PÁGINA DE INICIO");
-        startPage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startPageActionPerformed(evt);
-            }
-        });
-        jPanel1.add(startPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 250, 30));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("(Regresar)");
@@ -209,11 +200,6 @@ public class Ventana3 extends javax.swing.JFrame {
         
     }//GEN-LAST:event_saveActionPerformed
 
-    private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
-        this.setVisible(false);
-        v1.setVisible(true);
-    }//GEN-LAST:event_startPageActionPerformed
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -260,7 +246,6 @@ public class Ventana3 extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel logo;
     private javax.swing.JButton save;
-    private javax.swing.JButton startPage;
     private javax.swing.JLabel tipo;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;

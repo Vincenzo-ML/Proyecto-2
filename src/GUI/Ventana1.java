@@ -6,6 +6,7 @@ package GUI;
 
 import Datos.*;
 import Objetos.*;
+import Nodos.*;
 import javax.swing.JOptionPane;
 
 public class Ventana1 extends javax.swing.JFrame {
@@ -23,7 +24,8 @@ public class Ventana1 extends javax.swing.JFrame {
     Lista<Persona> list = new Lista<>();
     Util func = new Util();
     long st = 0;
-    Monticulo monticulo = new Monticulo(50);
+    Monticulo monticulo = new Monticulo(100);
+    HashTable hasht = new HashTable(100);
     
     public Ventana1() {
         initComponents();
@@ -61,6 +63,7 @@ public class Ventana1 extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,7 +139,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 printDocumentActionPerformed(evt);
             }
         });
-        background.add(printDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 170, 40));
+        background.add(printDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 170, 40));
 
         createDocument.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         createDocument.setText("CREAR DOCUMENTO");
@@ -154,7 +157,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 freePrinterActionPerformed(evt);
             }
         });
-        background.add(freePrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 160, 40));
+        background.add(freePrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 160, 40));
 
         showPrinter.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         showPrinter.setText("MOSTRAR COLA DE IMPRESIÓN");
@@ -192,14 +195,17 @@ public class Ventana1 extends javax.swing.JFrame {
         jLabel4.setText("Salir / Guardar");
         background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, -1, -1));
 
-        jLabel5.setText("Elimina aquellos que no están ");
-        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
+        jLabel5.setText("Imprime el primer documento en la cola");
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, -1, -1));
 
         jLabel6.setText("en la cola de impresión");
         background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
 
         jLabel7.setText("Envía un doc. a la cola de impresión");
         background.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
+
+        jLabel8.setText("Elimina aquellos que no están ");
+        background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
 
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 500));
 
@@ -215,7 +221,6 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_addUserActionPerformed
 
     private void deleteDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDocumentActionPerformed
-        JOptionPane.showMessageDialog(null, "ELIMINAR DOCUMENTO! Aquí podras eliminar aquellos documentos que no se han mandado a imprimir. Toma en consideración que si el documento fue mandado a imprimir no aparecerá en la lista de documentos.");
         Ventana6 v6 = new Ventana6(this);
     }//GEN-LAST:event_deleteDocumentActionPerformed
 
@@ -233,7 +238,6 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteUserActionPerformed
 
     private void createDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createDocumentActionPerformed
-        JOptionPane.showMessageDialog(null, "CREAR DOCUMENTO! Toma en consideración el tipo de documento, si escoges 'prioritario', la prioridad del documento al mandarlo a imprimir dependerá de la prioridad asignada al usuario. De lo contrario, dependerá del tiempo de ejecución de los demás documentos en la impresora");
         Ventana5 v5 = new Ventana5(this);
     }//GEN-LAST:event_createDocumentActionPerformed
 
@@ -246,7 +250,12 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteDocColaActionPerformed
 
     private void freePrinterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freePrinterActionPerformed
-        JOptionPane.showMessageDialog(null, "LIBERAR IMPRESORA! Se imprimirá el documento que esté de primero según el orden de prioridad");
+        if (monticulo.len()>0){
+            NMonticulo x = monticulo.removeMin();
+            JOptionPane.showMessageDialog(null, "Impresión Exitosa, Documento: "+ x.getName() + " fue impreso con éxito");
+        }else{
+            JOptionPane.showMessageDialog(null, "Impresora vacía, no hay nada en la cola de impresión.");
+        }
     }//GEN-LAST:event_freePrinterActionPerformed
 
     
@@ -301,6 +310,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JButton printDocument;
     private javax.swing.JButton showPrinter;
     private javax.swing.JLabel title;

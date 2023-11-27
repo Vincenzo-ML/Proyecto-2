@@ -66,8 +66,8 @@ public class Ventana6 extends javax.swing.JFrame {
         usuario3 = new javax.swing.JLabel();
         usuario2 = new javax.swing.JLabel();
         title1 = new javax.swing.JLabel();
-        startPage = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        showPrinter2 = new javax.swing.JButton();
         tipo = new javax.swing.JLabel();
         docName = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
@@ -110,38 +110,39 @@ public class Ventana6 extends javax.swing.JFrame {
         txtAUser.setEditable(false);
         txtAUser.setBackground(new java.awt.Color(255, 255, 255));
         txtAUser.setColumns(20);
+        txtAUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtAUser.setRows(5);
         jScrollPane1.setViewportView(txtAUser);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 310, 280));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 310, 280));
 
         usuario3.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         usuario3.setForeground(new java.awt.Color(255, 255, 255));
         usuario3.setText("NOMBRE USUARIO --> NOMBRE DOC --> TAMAÑO DOC ");
-        jPanel2.add(usuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 320, 20));
+        jPanel2.add(usuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 320, 20));
 
         usuario2.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         usuario2.setForeground(new java.awt.Color(255, 255, 255));
         usuario2.setText("--> PRIORIDAD DOC.");
-        jPanel2.add(usuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 320, 20));
+        jPanel2.add(usuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 320, 20));
 
         title1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         title1.setForeground(new java.awt.Color(255, 255, 255));
         title1.setText("LISTA DE DOCUMENTOS");
-        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-
-        startPage.setForeground(new java.awt.Color(255, 0, 0));
-        startPage.setText("VOLVER A LA PÁGINA DE INICIO");
-        startPage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startPageActionPerformed(evt);
-            }
-        });
-        jPanel2.add(startPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 250, 30));
+        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("(Regresar)");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, -1, -1));
+
+        showPrinter2.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        showPrinter2.setText("VER IMPRESORA");
+        showPrinter2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPrinter2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(showPrinter2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 140, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 330, 500));
 
@@ -254,10 +255,9 @@ public class Ventana6 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_nextActionPerformed
 
-    private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
-        this.setVisible(false);
-        v1.setVisible(true);
-    }//GEN-LAST:event_startPageActionPerformed
+    private void showPrinter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrinter2ActionPerformed
+        v1.monticulo.VerArbol();
+    }//GEN-LAST:event_showPrinter2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,7 +305,7 @@ public class Ventana6 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel logo;
     private javax.swing.JButton next;
-    private javax.swing.JButton startPage;
+    private javax.swing.JButton showPrinter2;
     private javax.swing.JLabel tipo;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;

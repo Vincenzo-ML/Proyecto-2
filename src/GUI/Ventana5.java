@@ -68,11 +68,13 @@ public class Ventana5 extends javax.swing.JFrame {
         exit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAUser = new javax.swing.JTextArea();
-        startPage = new javax.swing.JButton();
         title1 = new javax.swing.JLabel();
         usuario2 = new javax.swing.JLabel();
         usuario3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        showPrinter = new javax.swing.JButton();
+        showPrinter1 = new javax.swing.JButton();
+        showPrinter2 = new javax.swing.JButton();
         userName = new javax.swing.JTextField();
         usuario1 = new javax.swing.JLabel();
         docName = new javax.swing.JTextField();
@@ -137,38 +139,57 @@ public class Ventana5 extends javax.swing.JFrame {
         txtAUser.setEditable(false);
         txtAUser.setBackground(new java.awt.Color(255, 255, 255));
         txtAUser.setColumns(20);
+        txtAUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtAUser.setRows(5);
         jScrollPane1.setViewportView(txtAUser);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 310, 280));
-
-        startPage.setForeground(new java.awt.Color(255, 0, 0));
-        startPage.setText("VOLVER A LA PÁGINA DE INICIO");
-        startPage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startPageActionPerformed(evt);
-            }
-        });
-        jPanel2.add(startPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 250, 30));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 310, 280));
 
         title1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         title1.setForeground(new java.awt.Color(255, 255, 255));
         title1.setText("LISTA DE DOCUMENTOS");
-        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         usuario2.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         usuario2.setForeground(new java.awt.Color(255, 255, 255));
         usuario2.setText("--> PRIORIDAD DOC.");
-        jPanel2.add(usuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 320, 20));
+        jPanel2.add(usuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 320, 20));
 
         usuario3.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         usuario3.setForeground(new java.awt.Color(255, 255, 255));
         usuario3.setText("NOMBRE USUARIO --> NOMBRE DOC --> TAMAÑO DOC ");
-        jPanel2.add(usuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 320, 20));
+        jPanel2.add(usuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 320, 20));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("(Regresar)");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
+
+        showPrinter.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        showPrinter.setText("MOSTRAR COLA DE IMPRESIÓN");
+        showPrinter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPrinterActionPerformed(evt);
+            }
+        });
+        jPanel2.add(showPrinter, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, 210, 40));
+
+        showPrinter1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        showPrinter1.setText("MOSTRAR COLA DE IMPRESIÓN");
+        showPrinter1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPrinter1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(showPrinter1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, 210, 40));
+
+        showPrinter2.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        showPrinter2.setText("VER IMPRESORA");
+        showPrinter2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPrinter2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(showPrinter2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 140, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 350, 500));
 
@@ -309,10 +330,17 @@ public class Ventana5 extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_nextActionPerformed
 
-    private void startPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startPageActionPerformed
-        this.setVisible(false);
-        v1.setVisible(true);
-    }//GEN-LAST:event_startPageActionPerformed
+    private void showPrinterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrinterActionPerformed
+  
+    }//GEN-LAST:event_showPrinterActionPerformed
+
+    private void showPrinter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrinter1ActionPerformed
+
+    }//GEN-LAST:event_showPrinter1ActionPerformed
+
+    private void showPrinter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrinter2ActionPerformed
+        v1.monticulo.VerArbol();
+    }//GEN-LAST:event_showPrinter2ActionPerformed
 
    
     public static void main(String args[]) {
@@ -362,7 +390,9 @@ public class Ventana5 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel logo;
     private javax.swing.JButton next;
-    private javax.swing.JButton startPage;
+    private javax.swing.JButton showPrinter;
+    private javax.swing.JButton showPrinter1;
+    private javax.swing.JButton showPrinter2;
     private javax.swing.JLabel tipo;
     private javax.swing.JLabel tipo1;
     private javax.swing.JLabel title;

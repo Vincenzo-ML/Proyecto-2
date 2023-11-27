@@ -61,16 +61,16 @@ public class HashTable {
     }
     
     
-    public Lista FindAllDocbyPerson(String key){
+    public Lista<Documentos> FindAllDocbyPerson(String key){
         int index = key.hashCode() % max;
-        Lista<NHash> Ls = new Lista<NHash>();
+        Lista<Documentos> Ls = new Lista<>();
         
         if (tabla.get(index) != null) {
             Lista<NHash> lista = tabla.get(index);
             for (int i= 0;i<lista.getSize(); i++){
                 NHash x = lista.get(i);
                 if(x.getElementhash().getName().equals(key)){
-                    Ls.append(x);
+                    Ls.append(x.getElementhash());
                 }
             }  
         }
