@@ -12,14 +12,12 @@ import Nodos.*;
 
 public class Ventana8 extends javax.swing.JFrame {
 
-    public static Ventana10 v10;
     public static Ventana1 v1;
     
-    public Ventana8(Ventana10 v10) {
+    public Ventana8(Ventana1 v1) {
         initComponents();
-        this.v10 = v10;
         this.v1 = v1;
-        v10.setVisible(false);
+        v1.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setSize(780, 502);
@@ -34,7 +32,7 @@ public class Ventana8 extends javax.swing.JFrame {
             String temp = v1.monticulo.getNode(x).getName();
             int temp2 = v1.monticulo.getNode(x).gettamaño();
 
-            txtAUser.append("\n" + (x+1) + " -->" + temp + " --> "+ temp2 + "paginas");
+            txtAUser.append("\n" + (x+1) + " -->" + temp + " --> "+ temp2 + "páginas");
         }
         
     }
@@ -57,6 +55,9 @@ public class Ventana8 extends javax.swing.JFrame {
         title1 = new javax.swing.JLabel();
         usuario3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        userName = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        tipo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -75,7 +76,7 @@ public class Ventana8 extends javax.swing.JFrame {
         jPanel1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         tipo.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        tipo.setText("NOMBRE DEL DOCUMENTO");
+        tipo.setText("USUARIO");
         jPanel1.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         docName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -86,10 +87,10 @@ public class Ventana8 extends javax.swing.JFrame {
                 docNameActionPerformed(evt);
             }
         });
-        jPanel1.add(docName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 330, 30));
+        jPanel1.add(docName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 330, 30));
 
         jSeparator2.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 330, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 330, 20));
 
         print.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         print.setText("ELIMINAR");
@@ -98,7 +99,7 @@ public class Ventana8 extends javax.swing.JFrame {
                 printActionPerformed(evt);
             }
         });
-        jPanel1.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
+        jPanel1.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -150,6 +151,23 @@ public class Ventana8 extends javax.swing.JFrame {
         jLabel1.setText("EN LA IMPRESORA");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
 
+        userName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        userName.setForeground(new java.awt.Color(204, 204, 204));
+        userName.setBorder(null);
+        userName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameActionPerformed(evt);
+            }
+        });
+        jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 330, 30));
+
+        jSeparator3.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 330, 20));
+
+        tipo1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        tipo1.setText("NOMBRE DEL DOCUMENTO");
+        jPanel1.add(tipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 510));
 
         pack();
@@ -160,41 +178,58 @@ public class Ventana8 extends javax.swing.JFrame {
     }//GEN-LAST:event_docNameActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
-        
         try{
+            String user_name = userName.getText();
             String doc_name = docName.getText();
-            String nombre = v10.name;
             //Si está vacío...
-            if (doc_name.isEmpty()){
+            if (user_name.isEmpty()){
+                JOptionPane.showMessageDialog(null, "ERROR! Debe ingresar el nombre del usuario");
+            }else if (doc_name.isEmpty()){
                 JOptionPane.showMessageDialog(null, "ERROR! Debe ingresar el nombre del documento");
-            }else{
-                Lista<Documentos> docsList = v1.hasht.FindAllDocbyPerson(nombre);
-                if(docsList.EncontrarDocumento(doc_name) != null){
-                    for(int j = 0; j < docsList.len(); j++){
-                    Documentos doc = docsList.get(j);
-                    Long time = v1.hasht.FindTime(nombre, doc);
-                    v1.monticulo.eliminardemonticulo(time);
+            }else{  
+                //si el usuario existe en el programa...
+                if (v1.list.EncontrarPersona(user_name) != null){
+                    
+                    for (int x = 0; x < v1.list.len(); x++){
+                        Persona person = v1.list.get(x);
+                        //ubicamos al usuario...
+                        if (person.getName().equals(user_name) == true){
+                            Lista<Documentos> docsList = v1.hasht.FindAllDocbyPerson(user_name);
+                            
+                            for(int j = 0; j < docsList.len(); j++){
+                                Documentos doc = docsList.get(j);
+                                Long time = v1.hasht.FindTime(user_name, doc);
+                                v1.monticulo.eliminardemonticulo(time);
+                            }
+                            txtAUser.setText("");
+                            mostrarcola();
+                            JOptionPane.showMessageDialog(null, "Se eliminó de la cola de impresión al documento: " + doc_name);
+                            
+                        }    
+                                    
                     }
-                    txtAUser.setText("");
-                    mostrarcola();
-                    JOptionPane.showMessageDialog(null, "Se eliminó de la cola de impresión al documento: " + doc_name);
                 }else{
-                    JOptionPane.showMessageDialog(null, "ERROR! El documento: " + doc_name + " no existe en el programa para ese usuario, intente crearlo.");
-                }  
+                    JOptionPane.showMessageDialog(null, "ERROR el usuario: " + user_name + " no está añadido en el programa, intente registrarlo!");
+                }
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al leer el archivo de usuarios.");
-        }    
+        }
+        
     }//GEN-LAST:event_printActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         this.setVisible(false);
-        v10.setVisible(true);
+        v1.setVisible(true);
     }//GEN-LAST:event_exitActionPerformed
 
     private void showPrinter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrinter2ActionPerformed
         v1.monticulo.VerArbol();
     }//GEN-LAST:event_showPrinter2ActionPerformed
+
+    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,7 +261,7 @@ public class Ventana8 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana8(v10).setVisible(true);
+                new Ventana8(v1).setVisible(true);
             }
         });
     }
@@ -240,13 +275,16 @@ public class Ventana8 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel logo;
     private javax.swing.JButton print;
     private javax.swing.JButton showPrinter2;
     private javax.swing.JLabel tipo;
+    private javax.swing.JLabel tipo1;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;
     private javax.swing.JTextArea txtAUser;
+    private javax.swing.JTextField userName;
     private javax.swing.JLabel usuario3;
     // End of variables declaration//GEN-END:variables
 }

@@ -246,16 +246,18 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_printDocumentActionPerformed
 
     private void deleteDocColaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDocColaActionPerformed
-        Ventana10 v10 = new Ventana10(this);
+        Ventana8 v8 = new Ventana8(this);
     }//GEN-LAST:event_deleteDocColaActionPerformed
 
     private void freePrinterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freePrinterActionPerformed
         if (monticulo.len()>0){
             NMonticulo x = monticulo.removeMin();
+            hasht.deleateafterprint(x);
             JOptionPane.showMessageDialog(null, "Impresión Exitosa, Documento: "+ x.getName() + " fue impreso con éxito");
         }else{
             JOptionPane.showMessageDialog(null, "Impresora vacía, no hay nada en la cola de impresión.");
         }
+
     }//GEN-LAST:event_freePrinterActionPerformed
 
     

@@ -135,37 +135,19 @@ public class HashTable {
             }
         }
     }
-}
-  /*  private int HashFunction(String usuario){
-        int hashCode = usuario.hashCode();
-        return Math.abs(hashCode) % tabla.length; 
-    }
-            
-    public void insert(Persona Persona){
-        String persona = Persona.getName();
-        int index = HashFunction(persona);
-        tabla[index].insert(index,persona);  
-    }
     
-    
-    public void delete(Persona Persona){
-        String persona = Persona.getName();
-        int index = HashFunction(persona);
-        tabla[index].pop(index);
-    }
-    
-    //esta malo esto
-    public void search (Persona Persona){
-        String persona = Persona.getName();
-        int index = HashFunction(persona);
-        tabla[index].pop(index);
-    }
-    
-    public void printData() {
-        for (int i = 0; i < tabla.length; i++) {
-            System.out.println("Lista " + i + ":");
-            tabla[i].print();
-            System.out.println();
+    public void deleateafterprint(NMonticulo x){
+        Documentos doc = x.getElementmont();
+       
+        for(int i= 0;i<tabla.getSize(); i++){
+            Lista<NHash> lista = tabla.get(i);
+            for(int ii= 0;ii<lista.getSize(); ii++){
+                if(lista.get(ii).getElementhash() == doc){
+                    lista.pop(ii);
+                }
+            }
         }
-    }*/
+    }
+}
+  
 

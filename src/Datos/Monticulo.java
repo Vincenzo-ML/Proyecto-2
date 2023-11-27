@@ -155,18 +155,17 @@ public class Monticulo<T> {
     
     public void eliminardemonticulo(Long t) {
         Lista<NMonticulo> lista = new Lista();
-        
-        for(int i = 0; i < array.length; i++){
-            if(removeMin().getTime() == t){
-                removeMin();
-            } else {
-                if(removeMin().getTime() == t){
-                    NMonticulo xxxx = removeMin();
-                    lista.append(xxxx);
-                }
+
+        int initialSize = size;
+
+        for(int i = 0; i < initialSize; i++){
+            NMonticulo element = removeMin();
+
+            if(element.getTime() != t){
+                lista.append(element);
             }
         }
-        
+
         for(int i = 0; i < lista.len(); i++){
             insert(lista.get(i));
         }

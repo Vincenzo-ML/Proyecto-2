@@ -242,10 +242,6 @@ public class Ventana6 extends javax.swing.JFrame {
                         }    
                                     
                     }
-                    //MOSTRARLOSSSS
-                    /*txtAUser.setText("");
-                    mostrarUsuarios();*/
-                    //JOptionPane.showMessageDialog(null, "Se eliminó con éxito al documento: " + doc_name);
                 }else{
                     JOptionPane.showMessageDialog(null, "ERROR el usuario: " + user_name + " no está añadido en el programa, intente registrarlo!");
                 }
