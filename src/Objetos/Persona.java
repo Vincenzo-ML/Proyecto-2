@@ -13,8 +13,11 @@ import Datos.Lista;
 public class Persona {
     private String name;
     private String prioridad;
-    private Lista<Documentos> documentos;
+    private Lista<Documentos> documentos = new Lista<> ();
 
+    public Persona() {
+    }
+    
     public Persona(String name, String prioridad ,Lista<Documentos> documentos) {
         this.name = name;
         this.prioridad = prioridad;

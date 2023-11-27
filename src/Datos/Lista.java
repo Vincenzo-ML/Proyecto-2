@@ -4,6 +4,8 @@
  */
 package Datos;
 
+import Nodos.Nodo;
+import Objetos.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -68,6 +70,8 @@ public class Lista<T> {
         tail = null;
         size = 0;
     }
+    
+  
     
     public final void append(T data){
         Nodo newNode = new Nodo(data);
@@ -184,6 +188,8 @@ public class Lista<T> {
         }
         return 0;
     }    
+    
+    
 
     
     public void replace(int position, T data){
@@ -233,5 +239,34 @@ public class Lista<T> {
         return false;
     }
     
+    public void print(){
+        Nodo pointer = getHead();
+        while(pointer != null){
+            System.out.println("["+ pointer.getData() +"]");
+            pointer = pointer.getNext();
+        }
+    }
     
+    public Persona EncontrarPersona(String name){
+        for(int x = 0; x < this.len(); x++){
+            Persona person = (Persona) this.get(x);
+            if(person.getName().equals(name)){
+                return person;
+            }
+        }
+        return null;
+    }
+    
+    public Documentos EncontrarDocumento(String name){
+        for(int x = 0; x < this.len(); x++){
+            Documentos doc = (Documentos) this.get(x);
+            if(doc.getName().equals(name)){
+                return doc;
+            }
+        }
+        return null;
+    }
+    
+    
+
 }

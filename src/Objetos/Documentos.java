@@ -10,11 +10,12 @@ package Objetos;
 public class Documentos {
 
     private String Name;
-    private String tamaño;
+    private int tamaño;
     private String tipo;
+    private Long Tiempo;
 
 
-    public Documentos(String Name, String tamaño, String tipo) {
+    public Documentos(String Name, int tamaño, String tipo) {
         this.Name = Name;
         this.tamaño = tamaño;
         this.tipo = tipo;
@@ -30,12 +31,12 @@ public class Documentos {
     }
 
 
-    public String gettamaño() {
+    public int gettamaño() {
         return tamaño;
     }
 
  
-    public void settamaño(String tamaño) {
+    public void settamaño(int tamaño) {
         this.tamaño = tamaño;
     }
     
@@ -47,6 +48,9 @@ public class Documentos {
     public void settipo(String tipo) {
         this.tipo = tipo;
     }
-
     
+    public Long Gettime(){
+        return Tiempo;
+    }
+
 }
