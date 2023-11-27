@@ -225,7 +225,8 @@ public class Ventana7 extends javax.swing.JFrame {
                                 for (int j = 0; j < docList.len(); j++){
                                     Documentos doc_person = docList.get(j);
                                     long time = v1.func.SentTime(v1.st);
-                                    if (doc_person.gettipo().equalsIgnoreCase("Prioritario") == true){
+                                    if (doc_person.getName().equalsIgnoreCase(doc_name)== true){
+                                        if (doc_person.gettipo().equalsIgnoreCase("Prioritario") == true){
                                         String newTipo = person.getprioridad();
                                         if (newTipo.equalsIgnoreCase("Prioridad Alta")== true){
                                             long finaltime = time / 4;
@@ -249,13 +250,15 @@ public class Ventana7 extends javax.swing.JFrame {
                                             NHash nodohash = new NHash(user_name, doc_person, finaltime);
                                             v1.hasht.insert(nodohash);
                                         }
-                                    }else{
-                                        NMonticulo nodo = new NMonticulo(time, doc_person);
-                                        docList.pop(j);
-                                        v1.monticulo.insert(nodo);
-                                        NHash nodohash = new NHash(user_name, doc_person, time);
-                                        v1.hasht.insert(nodohash);
+                                        }else{
+                                            NMonticulo nodo = new NMonticulo(time, doc_person);
+                                            docList.pop(j);
+                                            v1.monticulo.insert(nodo);
+                                            NHash nodohash = new NHash(user_name, doc_person, time);
+                                            v1.hasht.insert(nodohash);
+                                        }
                                     }
+                                    
                                 }
                                 txtAUser.setText("");
                                 mostrarDocumentos();

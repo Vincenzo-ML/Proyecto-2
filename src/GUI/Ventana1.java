@@ -246,7 +246,7 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_printDocumentActionPerformed
 
     private void deleteDocColaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDocColaActionPerformed
-        Ventana8 v8 = new Ventana8(this);
+        Ventana10 v10 = new Ventana10(this);
     }//GEN-LAST:event_deleteDocColaActionPerformed
 
     private void freePrinterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freePrinterActionPerformed

@@ -16,6 +16,7 @@ public class Ventana9 extends javax.swing.JFrame {
     
     public Ventana9(Ventana1 v1) {
         initComponents();
+        this.v1 = v1;
         v1.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -26,14 +27,14 @@ public class Ventana9 extends javax.swing.JFrame {
    
     @SuppressWarnings("unchecked")
     public void mostrarcola(){
-        if (v1.monticulo.isEmpty() == false){
-            for (int x = 0; x < v1.monticulo.getSize(); x++){
-                String temp = v1.monticulo.getNode(x).getName();
-                int temp2 = v1.monticulo.getNode(x).gettamaño();
-                
-                txtAUser.append("\n" + (x+1) + " -->" + temp + " --> "+ temp2 + "paginas");
-            }
+
+        for (int x = 0; x < v1.monticulo.getSize(); x++){
+            String temp = v1.monticulo.getNode(x).getName();
+            int temp2 = v1.monticulo.getNode(x).gettamaño();
+
+            txtAUser.append("\n" + (x+1) + " -->" + temp + " --> "+ temp2 + "paginas");
         }
+        
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -88,15 +89,15 @@ public class Ventana9 extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 330, 280));
 
-        usuario3.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        usuario3.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         usuario3.setForeground(new java.awt.Color(255, 255, 255));
-        usuario3.setText("NOMBRE DOCUMENTO -->");
-        jPanel2.add(usuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 340, 20));
+        usuario3.setText("N° --> NOMBRE DOCUMENTO --> TAMAÑO DOC.");
+        jPanel2.add(usuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 340, 20));
 
         title1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         title1.setForeground(new java.awt.Color(255, 255, 255));
         title1.setText("COLA DE IMPRESIÓN");
-        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        jPanel2.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 40));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("(Regresar)");
@@ -114,7 +115,7 @@ public class Ventana9 extends javax.swing.JFrame {
                 showPrinter2ActionPerformed(evt);
             }
         });
-        jPanel1.add(showPrinter2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 150, 50));
+        jPanel1.add(showPrinter2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 150, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 510));
 
